@@ -18,3 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+//Ctegories routes
+Route::get('categories/create',[
+    'uses' => 'CreateCategoryController@create',
+    'as'    => 'categories.create'
+]);
+Route::post('categories/create',[
+    'uses' => 'CreateCategoryController@store',
+    'as'    => 'categories.store'
+]);
+
+
