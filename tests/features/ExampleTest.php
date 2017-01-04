@@ -2,17 +2,15 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class ExampleTest extends FeatureTestCase
 {
     /**
      * A basic functional test example.
      *
      * @return void
      */
-    //using this trait insted of databasemigratoion to make tests faster
-    use DatabaseTransactions;
 
-    public function testBasicExample()
+    function test_basic_example()
     {
         $user = factory(App\User::class)->create([
             'name' => 'Valentin Plechuc',
