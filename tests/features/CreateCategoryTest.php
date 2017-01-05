@@ -9,26 +9,26 @@
 namespace tests\features;
 
 
-class CreateProductTest extends \FeatureTestCase
+class CreateCategoryTest extends \FeatureTestCase
 {
-    public function test_a_user_can_create_a_product()
+    public function test_a_user_can_create_a_category()
     {
+        $descripcion = 'categoria1';
         //obtain a default user
         //having
         $this->actingAs($this->getDefaultUser());
 
         //when
         $this->visit(route('categories.create'))
-            ->type('categoria1', 'descripcion')
+            ->type($descripcion, 'descripcion')
             ->click('Aceptar');
 
         //then
         $this->seeInDatabase('category',[
-            'descripcion' => 'categoria1'
+            'descripcion' => $descripcion,
         ]);
         //redirected to category list
-        $this->seeInElement('h1', 'Listado de Categorias');
-
+        $this->see($descripcion);
 
     }
 

@@ -8,19 +8,20 @@
                     <div class="panel-heading">Register</div>
                     <div class="panel-body">
 
-                        {!! Form::open(['method'=>'POST' , 'route'=>'categories.store']!!}
+                        {!! Form::open(['method' => 'POST', 'route' => 'categories.store']) !!}
+
 
                             {!! Field::text('descripcion') !!}
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Register
+                                        Aceptar
                                     </button>
                                 </div>
                             </div>
 
-                        {!! Foem::close() !!}
+                        {!! Form::close() !!}
 
                     </div>
                 </div>
