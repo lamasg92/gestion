@@ -21,10 +21,10 @@ class CreateCategoryTest extends \FeatureTestCase
         //when
         $this->visit(route('categories.create'))
             ->type($descripcion, 'descripcion')
-            ->click('Aceptar');
+            ->press('Aceptar');
 
         //then
-        $this->seeInDatabase('category',[
+        $this->seeInDatabase('categories',[
             'descripcion' => $descripcion,
         ]);
         //redirected to category list
