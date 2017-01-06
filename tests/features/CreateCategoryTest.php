@@ -11,6 +11,12 @@ namespace tests\features;
 
 class CreateCategoryTest extends \FeatureTestCase
 {
+    public function test_creating_a_category_requires_authentication()
+    {
+        $this->visit(route('categories.create'))
+            ->seePageIs(route('login'));
+    }
+
     public function test_a_user_can_create_a_category()
     {
         $descripcion = 'categoria1';
