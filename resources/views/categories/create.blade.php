@@ -11,7 +11,7 @@
                         {!! Form::open(['method' => 'POST', 'route' => 'categories.store']) !!}
 
 
-                            {!! Field::text('descripcion') !!}
+                            {!! Field::text('nombre') !!}
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
