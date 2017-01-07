@@ -47,7 +47,10 @@ class CreateCategoryTest extends \FeatureTestCase
             ->press('Aceptar');
 
          $this->seePageIs(route('categories.create'))
-            ->seeInElement('#field_nombre, help-block', 'El campo nombre es obligatorio');
+             ->seeErrors([
+                 'nombre' => 'El campo nombre es obligatorio',
+
+             ]);
 
     }
 
