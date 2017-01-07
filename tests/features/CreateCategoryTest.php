@@ -19,22 +19,48 @@ class CreateCategoryTest extends \FeatureTestCase
 
     public function test_a_user_can_create_a_category()
     {
-        $descripcion = 'categoria1';
+        $nombre = 'categoria1';
         //obtain a default user
         //having
         $this->actingAs($this->getDefaultUser());
 
         //when
         $this->visit(route('categories.create'))
-            ->type($descripcion, 'descripcion')
+            ->type($nombre, 'nombre')
             ->press('Aceptar');
 
         //then
         $this->seeInDatabase('categories',[
-            'descripcion' => $descripcion,
+            'nombre' => $nombre,
         ]);
         //redirected to category list
-        $this->see($descripcion);
+        //$this->see($nombre);
+
+    }
+
+    public function test_create_category_form_validation(){
+
+        //having
+        $this->actingAs($this->getDefaultUser());
+        //when
+        $this->visit(route('categories.create'))
+            ->press('Aceptar');
+
+         $this->seePageIs(route('categories.create'))
+            ->seeInElement('#field_nombre, help-block', 'El campo nombre es obligatorio');
+
+    }
+
+    public function test_cancel_category_creation(){
+
+        $this->markTestSkipped('not implemented.');
+        //having
+        $this->actingAs($this->getDefaultUser());
+        //when
+        $this->visit(route('categories.create'))
+            ->press('Cancelar');
+        //then
+        $this->seePageIs(route('categories.index'));
 
     }
 
