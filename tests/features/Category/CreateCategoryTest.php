@@ -33,7 +33,7 @@ class CreateCategoryTest extends \FeatureTestCase
         $this->seeInDatabase('categories',[
             'nombre' => $nombre,
         ]);
-        //redirected to category list
+        //redirected to Category list
         //$this->see($nombre);
 
     }

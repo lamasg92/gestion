@@ -13,11 +13,11 @@
  */
 //Ctegories routes
 Route::get('categories/create',[
-    'uses' => 'CreateCategoryController@create',
+    'uses' => 'Category\CreateCategoryController@create',
     'as'    => 'categories.create',
 ]);
 
 Route::post('categories/create',[
-    'uses' => 'CreateCategoryController@store',
+    'uses' => 'Category\CreateCategoryController@store',
     'as'    => 'categories.store',
 ]);
