@@ -45,26 +45,26 @@ class CreateCategoryTest extends \FeatureTestCase
         //when
         $this->visit(route('categories.create'))
             ->press('Aceptar');
-
+        //Then
          $this->seePageIs(route('categories.create'))
              ->seeErrors([
                  'nombre' => 'El campo nombre es obligatorio',
-
              ]);
-
-    }
+  }
 
     public function test_cancel_category_creation(){
 
         $this->markTestSkipped('not implemented.');
-        //having
+
+        //Having
         $this->actingAs($this->getDefaultUser());
-        //when
+
+        //When
         $this->visit(route('categories.create'))
             ->press('Cancelar');
-        //then
-        $this->seePageIs(route('categories.index'));
 
+        //Then
+        $this->seePageIs(route('categories.index'));
     }
 
 }
