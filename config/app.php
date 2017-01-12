@@ -12,8 +12,8 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Gestion',
-
+    'name' => 'Sistema de Gestion',
+    'short_name' => 'Gestion',
     /*
     |--------------------------------------------------------------------------
     | Application Environment
