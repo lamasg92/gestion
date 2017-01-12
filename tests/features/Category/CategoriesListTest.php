@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Category;
+
 class CategoriesListTest extends FeatureTestCase
 {
     public function test_a_user_can_see_the_list_of_categories()
@@ -16,6 +18,41 @@ class CategoriesListTest extends FeatureTestCase
         //Then
         $this->see('Categorias');
     }
+
+
+    public function test_categorie_are_paginated(){
+
+        //Having
+        //put this because the category option needs to be auth
+        $this->actingAs($this->getDefaultUser());
+
+        $first = factory(Category::class)->create([
+              'nombre' => 'categoria1',
+              'descripcion' => 'primera categoria',
+          ]);
+
+        factory(Category::class)->times(15)->create();
+
+        $last =   factory(Category::class)->create([
+            'nombre' => 'categoriaLast',
+            'descripcion' => 'ultima categoria',
+        ]);
+
+        //when
+        $this->visit(route('categories.index'));
+        //then
+        $this->see($first->nombre)
+            ->dontSee($last->nombre)
+            ->click(2)
+            ->see($last->nombre)
+            ->dontSee($first->nombre);
+
+
+
+    }
+
+
+
 
     public function test_an_admin_logued_user_can_edit_a_category()
     {

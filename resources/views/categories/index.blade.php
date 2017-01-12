@@ -9,15 +9,15 @@
                     <div class="panel-body">
 
                         <ul>
-                            @foreach($category as $categories)
+                            @foreach($categories as $category)
                                 <li>
-                                    {{$category->nombre . '  ' . $category->descipcion }}
+                                    {{$category->nombre }}
                                 </li>
                              @endforeach
                         </ul>
                         {{--{!! Form::open(['method' => 'POST', 'route' => 'categories.store']) !!}--}}
 
-
+                        {{$categories->render()}}
                         {{--{!! Field::text('nombre') !!}--}}
 
                         {{--<div class="form-group">--}}
