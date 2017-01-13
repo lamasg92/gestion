@@ -13,16 +13,13 @@ class CreateCategoryController extends Controller
 
     }
 
-
     public function store(Request $request){
         //validation
         $this->validate($request, [
             'nombre' => 'required'
         ]);
-
         //saves
        Category::create($request->all());
-
 
     }
 }
