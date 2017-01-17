@@ -9,10 +9,11 @@ class CategoriesListTest extends FeatureTestCase
     {
         //Having
         $this->actingAs($this->getDefaultUser());
-        $category = $this->createCategory([
+
+        /*$category = $this->createCategory([
             'nombre' => 'categoria1',
             'descripcion' => 'primera categoria',
-        ]);
+        ]);*/
         //When
         $this->visit(route('categories.index'));
         //Then
@@ -46,12 +47,7 @@ class CategoriesListTest extends FeatureTestCase
             ->click(2)
             ->see($last->nombre)
             ->dontSee($first->nombre);
-
-
-
     }
-
-
 
 
     public function test_an_admin_logued_user_can_edit_a_category()
@@ -72,17 +68,16 @@ class CategoriesListTest extends FeatureTestCase
 
     public function test_cancel_category_edition(){
 
-        $this->markTestSkipped('not implemented.');
         //Having
         $this->actingAs($this->getDefaultUser());
+
         //when
         $this->visit(route('categories.edit'))
             ->press('Cancelar');
+
         //then
         $this->seePageIs(route('categories.index'));
     }
-
-
 
 
 }

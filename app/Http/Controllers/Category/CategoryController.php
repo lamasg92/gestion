@@ -1,6 +1,5 @@
 <?php
 
-namespace App\Http\Controllers\Category;
 
 namespace App\Http\Controllers\Category;
 use App\Category;
@@ -13,5 +12,10 @@ class CategoryController extends Controller
         $categories = Category::paginate();
 
         return view('categories.index', compact('categories'));
+    }
+
+    public function edit()
+    {
+
     }
 }

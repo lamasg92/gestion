@@ -20,7 +20,6 @@ class CreateCategoryTest extends \FeatureTestCase
     public function test_a_user_can_create_a_category()
     {
         $nombre = 'categoria1';
-        //obtain a default user
         //having
         $this->actingAs($this->getDefaultUser());
 
@@ -33,8 +32,6 @@ class CreateCategoryTest extends \FeatureTestCase
         $this->seeInDatabase('categories',[
             'nombre' => $nombre,
         ]);
-        //redirected to Category list
-        //$this->see($nombre);
 
     }
 

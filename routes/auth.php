@@ -17,6 +17,18 @@ Route::get('categories/index',[
     'as'    => 'categories.index',
 ]);
 
+
+Route::post('categories/edit', [
+    'uses' => 'Category\CategoryController@edit',
+    'as' => 'categories.edit',
+]);
+
+Route::get('categories/edit', [
+    'uses' => 'Category\CategoryController@edit',
+    'as' => 'categories.edit',
+]);
+
+
 //Ctegories routes
 Route::get('categories/create',[
     'uses' => 'Category\CreateCategoryController@create',
