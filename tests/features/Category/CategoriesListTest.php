@@ -59,7 +59,7 @@ class CategoriesListTest extends FeatureTestCase
             'descripcion' => 'primera categoria',
         ]);
 
-        $this->visit('/category/index')
+        $this->visit('category/index')
             ->seeInElement('h1', 'Categorias')
             ->press('Editar')
             ->seePageIs(route('categories.edit'))
@@ -68,6 +68,7 @@ class CategoriesListTest extends FeatureTestCase
 
     public function test_cancel_category_edition(){
 
+        $this->markTestSkipped('not implemented.');
         //Having
         $this->actingAs($this->getDefaultUser());
 
