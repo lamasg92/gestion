@@ -11,11 +11,20 @@ namespace tests\features;
 
 class CreateRolTest extends \FeatureTestCase
 {
+    public function test_creating_a_rol()
+    {
+        //When
+        $this->visit(route('roles.create'));
+        //Then
+        $this->see('Rol');
+    }
+
     public function test_creating_a_rol_requires_authentication()
     {
         $this->visit(route('roles.create'))
             ->seePageIs(route('login'));
     }
+
 
     public function test_an_admin_user_can_create_a_category()
     {
@@ -30,7 +39,7 @@ class CreateRolTest extends \FeatureTestCase
 
     public function test_create_rol_form_validation()
     {
-
+        $this->markTestSkipped('not implemented.');
         //having
         $this->actingAs($this->getDefaultUser());
         //when

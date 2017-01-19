@@ -11,7 +11,7 @@
                         {!! Form::open(['method' => 'POST', 'route' => 'role.store']) !!}
 
 
-                        {!! Field::text('nombre') !!}
+                        {!! Field::text('Rol') !!}
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
