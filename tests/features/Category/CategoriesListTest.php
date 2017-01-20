@@ -2,9 +2,12 @@
 
 
 use App\Category;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CategoriesListTest extends FeatureTestCase
 {
+    use DatabaseTransactions;
+
     public function test_a_user_can_see_the_list_of_categories()
     {
         //Having
@@ -21,7 +24,8 @@ class CategoriesListTest extends FeatureTestCase
     }
 
 
-    public function test_categorie_are_paginated(){
+    public function test_categories_are_paginated()
+    {
 
         //Having
         //put this because the category option needs to be auth

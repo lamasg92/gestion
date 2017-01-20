@@ -9,8 +9,12 @@
 namespace tests\features;
 
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 class CreateCategoryTest extends \FeatureTestCase
 {
+    use DatabaseTransactions;
+
     public function test_creating_a_category_requires_authentication()
     {
         $this->visit(route('categories.create'))
