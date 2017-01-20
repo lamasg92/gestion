@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "620080f3b2e34e4e9ed6f92b82e8c1c1",
+    "content-hash": "bf4a1afb28eefc5ae8a9be2e023ce388",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -159,58 +159,6 @@
                 "string"
             ],
             "time": "2015-11-06T14:35:42+00:00"
-        },
-        {
-            "name": "fzaninotto/faker",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d0190b156bcca848d401fb80f31f504f37141c8d",
-                "reference": "d0190b156bcca848d401fb80f31f504f37141c8d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "~1.5"
-            },
-            "suggest": {
-                "ext-intl": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.5.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Faker\\": "src/Faker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "François Zaninotto"
-                }
-            ],
-            "description": "Faker is a PHP library that generates fake data for you.",
-            "keywords": [
-                "data",
-                "faker",
-                "fixtures"
-            ],
-            "time": "2015-05-29T06:29:14+00:00"
         },
         {
             "name": "graham-campbell/markdown",
@@ -877,6 +825,18 @@
         },
         {
             "name": "nesbot/carbon",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "version": "1.22.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/briannesbitt/Carbon.git",
+                "reference": "3b114ab800c6432ad42387ccf6bc8d4388a2885a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/3b114ab800c6432ad42387ccf6bc8d4388a2885a",
+                "reference": "3b114ab800c6432ad42387ccf6bc8d4388a2885a",
+=======
             "version": "1.22.1",
             "source": {
                 "type": "git",
@@ -887,6 +847,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/7cdf42c0b1cc763ab7e4c33c47a24e27c66bfccc",
                 "reference": "7cdf42c0b1cc763ab7e4c33c47a24e27c66bfccc",
+>>>>>>> updating composer lock
                 "shasum": ""
             },
             "require": {
@@ -926,7 +887,11 @@
                 "datetime",
                 "time"
             ],
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-15 14:47:48"
+=======
             "time": "2017-01-16T07:55:07+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "nikic/php-parser",
@@ -1145,7 +1110,11 @@
                 "interactive",
                 "shell"
             ],
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-15 17:54:13"
+=======
             "time": "2017-01-15T17:54:13+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "ramsey/uuid",
@@ -1271,53 +1240,6 @@
             "time": "2016-11-21T10:44:44+00:00"
         },
         {
-            "name": "styde/seeder",
-            "version": "1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/StydeNet/seeder.git",
-                "reference": "7064170e2d6747de6803a0c9e53de460dbae99da"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/StydeNet/seeder/zipball/7064170e2d6747de6803a0c9e53de460dbae99da",
-                "reference": "7064170e2d6747de6803a0c9e53de460dbae99da",
-                "shasum": ""
-            },
-            "require": {
-                "fzaninotto/faker": "1.5.*@dev",
-                "laravel/framework": "5.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Styde\\Seeder\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Duilio Palacios",
-                    "email": "admin@styde.net",
-                    "homepage": "https://styde.net",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Laravel's improved seeders",
-            "homepage": "https://styde.net",
-            "keywords": [
-                "laravel",
-                "seeder"
-            ],
-            "time": "2016-01-22T13:50:19+00:00"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.5",
             "source": {
@@ -1430,7 +1352,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-08 20:43:43"
+=======
             "time": "2017-01-08T20:43:43+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/debug",
@@ -1487,7 +1413,11 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-02 20:31:54"
+=======
             "time": "2017-01-02T20:31:54+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1547,7 +1477,11 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-02 20:32:22"
+=======
             "time": "2017-01-02T20:32:22+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/finder",
@@ -1596,7 +1530,11 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-02 20:31:54"
+=======
             "time": "2017-01-02T20:31:54+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/http-foundation",
@@ -1649,7 +1587,11 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-08 20:43:43"
+=======
             "time": "2017-01-08T20:43:43+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/http-kernel",
@@ -1731,7 +1673,11 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-12 20:43:39"
+=======
             "time": "2017-01-12T20:43:39+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1947,7 +1893,11 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-02 20:31:54"
+=======
             "time": "2017-01-02T20:31:54+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/routing",
@@ -2022,7 +1972,11 @@
                 "uri",
                 "url"
             ],
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-02 20:31:54"
+=======
             "time": "2017-01-02T20:31:54+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/translation",
@@ -2086,7 +2040,11 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-02 20:31:54"
+=======
             "time": "2017-01-02T20:31:54+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/var-dumper",
@@ -2149,7 +2107,11 @@
                 "debug",
                 "dump"
             ],
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-02 20:31:54"
+=======
             "time": "2017-01-02T20:31:54+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "vlucas/phpdotenv",
@@ -2256,6 +2218,54 @@
                 "instantiate"
             ],
             "time": "2015-06-14T21:17:01+00:00"
+        },
+        {
+            "name": "fzaninotto/faker",
+            "version": "v1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/44f9a286a04b80c76a4e5fb7aad8bb539b920123",
+                "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3|^7.0"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": []
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2016-04-29T12:21:54+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -3567,7 +3577,11 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-02 20:31:54"
+=======
             "time": "2017-01-02T20:31:54+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/dom-crawler",
@@ -3623,7 +3637,11 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-02 20:31:54"
+=======
             "time": "2017-01-02T20:31:54+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "symfony/yaml",
@@ -3678,7 +3696,11 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
+<<<<<<< 1b215748af89ee04c64103e96c971d5968026b31
+            "time": "2017-01-03 13:51:32"
+=======
             "time": "2017-01-03T13:51:32+00:00"
+>>>>>>> updating composer lock
         },
         {
             "name": "webmozart/assert",
