@@ -23,7 +23,7 @@ $factory->define(User::class, function (Faker\Generator $faker) {
         'username' => $faker->unique()->userName,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
-        'role_id' => $faker->numberBetween($min = 1, $max = 3),
+        'role_id' => $faker->numberBetween($min = 2, $max = 3),
         'remember_token' => str_random(10),
     ];
 });

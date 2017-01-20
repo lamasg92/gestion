@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class CreateCategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['guest', 'admin'], ['except' => 'logout']);
+    }
+
+
     public function create(){
 
         return view('admin.categories.create');

@@ -7,6 +7,12 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['guest', 'admin'], ['except' => 'logout']);
+    }
+
     public function index()
     {
         $categories = Category::paginate();

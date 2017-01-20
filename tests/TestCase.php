@@ -1,5 +1,6 @@
 <?php
 
+use App\Role;
 use App\User;
 
 abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
@@ -14,6 +15,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
      * @var \App\User
      */
     protected $defaultUser;
+    protected $adminUser;
 
     /**
      * Creates the application.
@@ -39,5 +41,23 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
             return $this->defaultUser;
         }
         return $this->defaultUser =  $user = factory(User::class)->create();
+    }
+
+    /**
+     * Obtain a default user
+     * @return mixed
+     */
+    function getAdminUser(){
+        //checking if is not already setted
+        if ($this->adminUser){
+            return $this->adminUser;
+        }
+        return $this->adminUser =  $user = User::create([
+            'name' => 'admin',
+            'username' => 'admin',
+            'email' => 'email@email.com',
+            'password' => bcrypt('admin'),
+            'role_id' => Role::where('nombre','admin')->first()->id,
+        ]);
     }
 }
