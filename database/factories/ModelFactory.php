@@ -11,7 +11,11 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+use App\{
+    Category, Role, User
+};
+
+$factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -19,19 +23,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'username' => $faker->unique()->userName,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
+        'role_id' => $faker->numberBetween($min = 1, $max = 3),
         'remember_token' => str_random(10),
     ];
 });
-$factory->define(App\Category::class, function (Faker\Generator $faker) {
+$factory->define(Category::class, function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->name,
         'descripcion' => $faker->text,
     ];
 });
 
-$factory->define(App\Role::class, function (Faker\Generator $faker) {
-    return [
-        'nombre' => $faker->word->unique(),
+$factory->define(Role::class, function (Faker\Generator $faker) {
+    return array(
+        'nombre' => $faker->unique()->word,
         'descripcion' => $faker->text,
-    ];
+    );
 });

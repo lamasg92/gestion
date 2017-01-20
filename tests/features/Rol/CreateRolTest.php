@@ -21,8 +21,11 @@ class CreateRolTest extends \FeatureTestCase
 
     public function test_creating_a_rol_requires_authentication()
     {
-        $this->visit(route('roles.create'))
-            ->seePageIs(route('login'));
+        //having
+        //When
+        $this->visit(route('roles.create'));
+        //then
+        $this->seePageIs(route('login'));
     }
 
 
@@ -43,7 +46,7 @@ class CreateRolTest extends \FeatureTestCase
         //having
         $this->actingAs($this->getDefaultUser());
         //when
-        $this->visit(route('rol.create'))
+        $this->visit(route('roles.create'))
             ->press('Aceptar');
         //Then
         $this->seePageIs(route('rol.create'))
