@@ -29,4 +29,9 @@ class CreateCategoryController extends Controller
        Category::create($request->all());
 
     }
+
+    public function delete(Request $request)
+    {
+
+    }
 }
