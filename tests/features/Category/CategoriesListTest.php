@@ -11,7 +11,7 @@ class CategoriesListTest extends FeatureTestCase
     public function test_a_user_can_see_the_list_of_categories()
     {
         //Having
-        $this->actingAs($this->getDefaultUser());
+        $this->actingAs($this->getAdminUser());
 
         /*$category = $this->createCategory([
             'nombre' => 'categoria1',
@@ -29,7 +29,7 @@ class CategoriesListTest extends FeatureTestCase
 
         //Having
         //put this because the category option needs to be auth
-        $this->actingAs($this->getDefaultUser());
+        $this->actingAs($this->getAdminUser());
 
         $first = factory(Category::class)->create([
               'nombre' => 'categoria1',

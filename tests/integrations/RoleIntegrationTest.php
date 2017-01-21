@@ -11,12 +11,12 @@ class RoleIntegrationTest extends TestCase
     function test_a_role_is_saved_to_the_database()
     {
         $role = factory(Role::class)->create([
-            'nombre' => 'admin',
-            'descripcion' => 'administrador del sistema'
+            'nombre' => 'otro',
+            'descripcion' => 'otro del sistema'
         ]);
 
         $this->assertSame(
-            'admin',
+            'otro',
             $role->fresh()->nombre
         );
     }
