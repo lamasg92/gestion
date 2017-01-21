@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
     {
         User::create([
             'name' => 'admin',
-            'username' => 'admin',
+            'username' => 'adm',
             'email' => 'admin@admin.com',
             'password' => bcrypt('admin'),
             'role_id' => Role::where('nombre','admin')->first()->id,
