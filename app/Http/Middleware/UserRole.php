@@ -16,14 +16,14 @@ class UserRole
     public function handle($request, Closure $next)
     {
         // gets logued user
-        $user = Auth::user();
-
-        if ($user->isAdmin()){
-            redirect(404);
-        }
+//        $user = Auth::user();
+//
+//        if ($user->isAdmin()){
+//            redirect(404);
+//        }
         //checks for  admin
         return $next($request);
 
-        return $next($request);
+
     }
 }
