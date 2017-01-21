@@ -20,7 +20,8 @@ class AdminRole
         $user = Auth::user();
 
         if (!$user->isAdmin()){
-            redirect(404);
+
+           return redirect()->route('home');
         }
         //checks for  admin
         return $next($request);
