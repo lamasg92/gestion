@@ -11,9 +11,7 @@
 |
 */
 
-use App\{
-    Category, Role, User
-};
+use App\{Category, Role, User};
 
 $factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
