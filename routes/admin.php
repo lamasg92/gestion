@@ -44,3 +44,8 @@ Route::get('roles/create', [
     'as' => 'roles.create',
 ]);
 
+
+Route::post('roles/create', [
+    'uses' => 'Role\RoleController@store',
+    'as' => 'roles.store',
+]);
