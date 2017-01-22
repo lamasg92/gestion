@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Role;
 
 use App\Http\Controllers\Controller;
+use App\Role;
 use Illuminate\Support\Facades\Request;
 
 class RoleController extends Controller
@@ -14,7 +15,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::paginate();
+
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
