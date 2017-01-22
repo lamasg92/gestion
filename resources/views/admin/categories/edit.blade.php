@@ -8,7 +8,7 @@
                     <div class="panel-heading">Register</div>
                     <div class="panel-body">
 
-                        {!! Form::open(['method' => 'POST', 'route' => '']) !!}
+                        {!! Form::open(['method' => 'POST', 'route' => 'edit']) !!}
 
 
                         {!! Field::text('nombre') !!}
