@@ -49,3 +49,9 @@ Route::post('roles/create', [
     'uses' => 'Role\RoleController@store',
     'as' => 'roles.store',
 ]);
+
+Route::get('roles/index', [
+    'uses' => 'Role\RoleController@index',
+    'as' => 'roles.index',
+]);
+

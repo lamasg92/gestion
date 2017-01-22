@@ -52,12 +52,16 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         if ($this->adminUser){
             return $this->adminUser;
         }
-        return $this->adminUser =  $user = User::create([
+
+        $user = new User([
             'name' => 'admin1',
             'username' => 'admin1',
             'email' => 'email@email.com',
             'password' => bcrypt('admin'),
-            'role_id' => Role::where('nombre','admin')->first()->id,
         ]);
+
+        $user->role_id = Role::where('nombre', 'admin')->first()->id;
+
+        return $this->adminUser = $user;
     }
 }

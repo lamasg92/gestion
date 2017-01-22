@@ -67,13 +67,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-        return User::create([
+        //avoid to do request.all()
+        $user = new User([
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'role_id' => Role::where('nombre','guest')->first()->id,
         ]);
+
+        $user->role_id = Role::where('nombre', 'guest')->first()->id;
+
+        $user->save();
+
+        return $user;
+
     }
 }
