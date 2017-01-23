@@ -8,9 +8,30 @@
 
 namespace tests\features;
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CreateRolTest extends \FeatureTestCase
 {
+
+    use DatabaseTransactions;
+
+    public function test_role_link()
+    {
+        //Having
+        //When
+        $this->visit(route('home'));
+        //Then
+        $this->dontSee('Roles');
+
+        //Having
+        $this->actingAs($this->getAdminUser());
+        //When
+        $this->visit(route('home'));
+        //Then
+        $this->see('Roles');
+    }
+
+
     public function test_creating_a_rol()
     {
         //When
