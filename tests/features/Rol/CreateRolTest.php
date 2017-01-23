@@ -15,14 +15,8 @@ class CreateRolTest extends \FeatureTestCase
 
     use DatabaseTransactions;
 
-    public function test_role_link()
+    public function test_role_link_requires_authentication()
     {
-        //Having
-        //When
-        $this->visit(route('home'));
-        //Then
-        $this->dontSee('Roles');
-
         //Having
         $this->actingAs($this->getAdminUser());
         //When
@@ -32,33 +26,14 @@ class CreateRolTest extends \FeatureTestCase
     }
 
 
-    public function test_creating_a_rol()
+    public function test_an_admin_user_can_creating_a_rol()
     {
+        //Having
+        $this->actingAs($this->getAdminUser());
         //When
         $this->visit(route('roles.create'));
         //Then
         $this->see('Rol');
-    }
-
-    public function test_creating_a_rol_requires_authentication()
-    {
-        //having
-        //When
-        $this->visit(route('roles.create'));
-        //then
-        $this->seePageIs(route('login'));
-    }
-
-
-    public function test_an_admin_user_can_create_a_category()
-    {
-        $this->markTestSkipped('not implemented.');
-        //having
-
-        //when
-
-        //then
-
     }
 
     public function test_create_rol_form_validation()
@@ -78,10 +53,10 @@ class CreateRolTest extends \FeatureTestCase
 
     public function test_cancel_rol_creation()
     {
-
-        $this->markTestSkipped('not implemented.');
-
         //Having
+        $this->actingAs($this->getAdminUser());
+        //When
+        $this->visit(route('roles.create'));
 
         //When
 
