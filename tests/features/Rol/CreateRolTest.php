@@ -36,6 +36,18 @@ class CreateRolTest extends \FeatureTestCase
         $this->see('Rol');
     }
 
+    public function test_an_admin_user_can_edit_a_rol()
+    {
+        $this->markTestSkipped('not implemented.');
+        //Having
+        $this->actingAs($this->getAdminUser());
+        //When
+        $this->visit(route('roles.edit'));
+        //Then
+        $this->seeInField('nombre', 'admin');
+    }
+
+
     public function test_create_rol_form_validation()
     {
         $this->markTestSkipped('not implemented.');
@@ -49,18 +61,6 @@ class CreateRolTest extends \FeatureTestCase
             ->seeErrors([
                 'nombre' => 'El campo nombre es obligatorio',
             ]);
-    }
-
-    public function test_cancel_rol_creation()
-    {
-        //Having
-        $this->actingAs($this->getAdminUser());
-        //When
-        $this->visit(route('roles.create'));
-
-        //When
-
-        //Then
     }
 
 }
