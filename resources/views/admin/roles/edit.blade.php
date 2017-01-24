@@ -8,7 +8,7 @@
                     <div class="panel-heading">Register Rol</div>
                     <div class="panel-body">
 
-                        {!! Form::open(['method' => 'POST', 'route' => 'roles.store']) !!}
+                        {!! Form::open(['method' => 'GET', 'route' => 'roles.edit']) !!}
 
 
                         {!! Field::text('Rol') !!}

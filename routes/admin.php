@@ -10,11 +10,12 @@
  * Define routes that requires authentication and admin privileges
  *
  */
+//Ctegories routes
+
 Route::get('categories/index', [
     'uses' => 'Category\CategoryController@index',
     'as' => 'categories.index',
 ]);
-
 
 Route::post('categories/edit', [
     'uses' => 'Category\CategoryController@edit',
@@ -26,8 +27,6 @@ Route::get('categories/edit', [
     'as' => 'categories.edit',
 ]);
 
-
-//Ctegories routes
 Route::get('categories/create', [
     'uses' => 'Category\CreateCategoryController@create',
     'as' => 'categories.create',
@@ -38,20 +37,12 @@ Route::post('categories/create', [
     'as' => 'categories.store',
 ]);
 
+//ROLES ROUTES
 
-Route::get('roles/create', [
-    'uses' => 'Role\RoleController@create',
-    'as' => 'roles.create',
-]);
-
-
-Route::post('roles/create', [
-    'uses' => 'Role\RoleController@store',
-    'as' => 'roles.store',
-]);
-
-Route::get('roles/index', [
-    'uses' => 'Role\RoleController@index',
-    'as' => 'roles.index',
-]);
+Route::resource('roles', 'Role\RoleController');
+//
+//Route::get('roles/edit', [
+//    'uses' => 'Role\RoleController@edit',
+//    'as' => 'roles.edit',
+//]);
 
