@@ -37,6 +37,13 @@ Route::post('categories/create', [
     'as' => 'categories.store',
 ]);
 
+
+Route::get('categories/{id}/destroy', [
+    'uses' => 'Category\CategoryController@destroy',
+    'as' => 'categories.destroy',
+]);
+
+
 //ROLES ROUTES
 
 Route::resource('roles', 'Role\RoleController');
