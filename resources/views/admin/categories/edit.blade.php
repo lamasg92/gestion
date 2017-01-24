@@ -9,8 +9,6 @@
                     <div class="panel-body">
 
                         {!! Form::open(['method' => 'POST', 'route' => 'edit']) !!}
-
-
                         {!! Field::text('nombre') !!}
 
                         <div class="form-group">

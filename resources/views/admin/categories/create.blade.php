@@ -10,7 +10,6 @@
 
                         {!! Form::open(['method' => 'POST', 'route' => 'categories.store']) !!}
 
-
                             {!! Field::text('nombre') !!}
 
                             <div class="form-group">
