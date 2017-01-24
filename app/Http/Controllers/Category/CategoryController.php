@@ -8,11 +8,6 @@ use App\Http\Controllers\Controller;
 class CategoryController extends Controller
 {
 
-    public function __construct()
-    {
-     //   $this->middleware(['guest', 'admin'], ['except' => 'logout']);
-    }
-
     public function index()
     {
         $categories = Category::paginate();
@@ -22,6 +17,16 @@ class CategoryController extends Controller
 
     public function edit()
     {
+
+    }
+
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+        $category->delete();
+
+        // Flash::error
+        return redirect()->route('categories.index');
 
     }
 }
