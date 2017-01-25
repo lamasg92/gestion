@@ -169,6 +169,7 @@ return [
         Styde\Html\HtmlServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Styde\Seeder\SeederServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
         //
 
         /*

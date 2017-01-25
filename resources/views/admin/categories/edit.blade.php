@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" xmlns="http://www.w3.org/1999/html">
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -18,11 +18,23 @@
                             </div>
                         </div>
 
+
+                        {{--<div class="form-group">--}}
+                            {{--<h2>Select</h2>--}}
+                            {{--<select class="form-control">--}}
+                                {{--@foreach($categories as $category)--}}
+                                    {{--<option>{{$category->name}}</option>--}}
+                                {{--@endforeach--}}
+                            {{--</select>--}}
+                        {{--</div>--}}
+
+
+
                         {!! Form::close() !!}
 
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 @endsection

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" xmlns="http://www.w3.org/1999/html">
-        <div class="row">
+
+       <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div id=panel-tittle class="panel-heading">Categorias</div>
@@ -22,11 +22,10 @@
                             {{--Allow pagination--}}
                             {{$categories->render()}}
 
-
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 @endsection

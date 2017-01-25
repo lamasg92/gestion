@@ -77,8 +77,6 @@
                 <div class="title m-b-md">
                     Sistema de Gestion
                 </div>
-
-
             </div>
         </div>
     </body>
