@@ -10,41 +10,17 @@
  * Define routes that requires authentication and admin privileges
  *
  */
+
+//Pattern definition for id
+Route::pattern('id' , '\d+');
+
 //Ctegories routes
 
-Route::get('categories/index', [
-    'uses' => 'Category\CategoryController@index',
-    'as' => 'categories.index',
-]);
-
-Route::post('categories/edit', [
-    'uses' => 'Category\CategoryController@edit',
-    'as' => 'categories.edit',
-]);
-
-Route::get('categories/edit', [
-    'uses' => 'Category\CategoryController@edit',
-    'as' => 'categories.edit',
-]);
-
-Route::get('categories/create', [
-    'uses' => 'Category\CreateCategoryController@create',
-    'as' => 'categories.create',
-]);
-
-Route::post('categories/create', [
-    'uses' => 'Category\CreateCategoryController@store',
-    'as' => 'categories.store',
-]);
-
-
-Route::get('categories/{id}/destroy', [
-    'uses' => 'Category\CategoryController@destroy',
-    'as' => 'categories.destroy',
-]);
+Route::resource('categories', 'Category\CategoryController');
 
 
 //ROLES ROUTES
+// delete NOT ALLOWED ADMIN
 
 Route::resource('roles', 'Role\RoleController');
 //
