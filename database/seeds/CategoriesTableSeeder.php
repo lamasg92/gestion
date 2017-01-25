@@ -12,14 +12,6 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        Category::create([
-            'nombre' => 'cate1',
-            'descripcion' => 'categoria uno',
-        ]);
-
-        Category::create([
-            'nombre' => 'cate',
-            'descripcion' => 'categoria dos',
-        ]);
+       factory(Category::class, 20)->create();
     }
 }

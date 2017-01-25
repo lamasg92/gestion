@@ -27,7 +27,7 @@ $factory->define(User::class, function (Faker\Generator $faker) {
 });
 $factory->define(Category::class, function (Faker\Generator $faker) {
     return [
-        'nombre' => $faker->name,
+        'nombre' => $faker->word,
         'descripcion' => $faker->text,
     ];
 });
