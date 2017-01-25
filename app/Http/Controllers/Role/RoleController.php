@@ -72,7 +72,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Only update description -- not admin
     }
 
     /**
@@ -83,7 +83,8 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // not admin
+        //checks if has some users attached
     }
 
 }
