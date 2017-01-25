@@ -18,6 +18,11 @@
                             <tbody>
                                 @include('partials.categoryList');
                             </tbody>
+
+                            {{--Allow pagination--}}
+                            {{$categories->render()}}
+
+
                         </table>
                     </div>
                 </div>
