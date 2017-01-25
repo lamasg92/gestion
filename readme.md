@@ -1,3 +1,117 @@
+# Sistema de Gestion
+## Intro
+One Paragraph of project description goes here
+
+## Contents
+
+- [Intro](#Intro)
+	- [Features](#features)
+
+- [Requerimientos](#Requerimientos)
+- [Instalacion](#Instalacion)
+- [Documentation](#Documentation)
+	- [Menus](#Menus)
+		- [Users](#Users)
+		- [Categorias](#Categorias)
+		- [Facturas](#Facturas)
+		    - [Nueva](#Nueva)
+	- [Production](#Production)
+		- [Prepare LaraDock for Production](#LaraDock-for-Production)
+		- [Setup Laravel and Docker on Digital Ocean](#Digital-Ocean)
+	- [Laravel](#Laravel):
+		- [Install Laravel from a Docker Container](#Install-Laravel)
+		- [Upgrading LaraDock](#upgrading-laradock)
+- [Tools](#Tools)
+- [Help & Questions](#Help)
+
+
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Requerimientos
+
+What things you need to install the software and how to install them
+
+```
+Give examples
+```
+
+### Instalacion
+
+A step by step series of examples that tell you have to get a development env running
+
+Say what the step will be
+
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Documentacion
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Tools
+
+* [Laravel](https://laravel.com/) - The web framework used
+* [Composer](https://getcomposer.org/) - Dependency Management
+* [MySql](https://www.mysql.com/) - Database used
+* [Apache](https://www.apache.org/) - WebServer used
+* [XAMPP](https://www.apachefriends.org/es/index.html) - Package for development used
+
+
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Plechuc Valentin** - *profile* - [GitHub](https://github.com/veplechuc)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* My family
+
+
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
