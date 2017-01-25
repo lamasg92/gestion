@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Category;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Styde\Html\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -15,11 +16,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
+
         $categories = Category::paginate();
 
-
         return view('admin.categories.index', compact('categories'));
-
     }
 
     /**
@@ -29,10 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-
-
         return view('admin.categories.create');
-
     }
 
     /**
@@ -49,6 +46,8 @@ class CategoryController extends Controller
         ]);
         //saves
         Category::create($request->all());
+
+        flash('Categoria creada exitosamente!!', 'success');
 
     }
 
@@ -102,7 +101,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        // Flash::error
+        flash('Categoria borrada exitosamente!!', 'success');
         return view('admin.categories.index');
       //  return redirect()->route('admin.categories.index');
 
