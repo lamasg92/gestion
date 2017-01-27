@@ -1,7 +1,10 @@
-# Sistema de Gestion
+# Sistema de Gestion - Proyecto de Habilitación Tecnicatura Superior en Tecnologías de Informacion
+                    
 <a name="Intro"></a>
 ## Intro
-One Paragraph of project description goes here
+Sistema de Gestion de Factuas que permite la facturacion  de un producto, ademas de la gestion de Usuarios, Clientes y Roles de Usuario.
+El sistema presenta la funcionalidad de acceso por logueo y Registro de nuevo Usuario como asi tambien permite la recuperacion de claves y reset de la misma
+
 
 ## Contents
 
@@ -11,17 +14,15 @@ One Paragraph of project description goes here
 - [Requerimientos](#Requerimientos)
 - [Instalacion](#Instalacion)
 - [Documentation](#Documentation)
-	- [Menus](#Menus)
+	- [Menus del Administrador](#MenusADM)
+	        
 		- [Users](#Users)
 		- [Categorias](#Categorias)
+	    - [Roles](#Roles)
+    - [Menus del Usuario](#MenusUSR)	    
 		- [Facturas](#Facturas)
-		    - [Nueva](#Nueva)
-	- [Production](#Production)
-		- [Prepare LaraDock for Production](#LaraDock-for-Production)
-		- [Setup Laravel and Docker on Digital Ocean](#Digital-Ocean)
-	- [Laravel](#Laravel):
-		- [Install Laravel from a Docker Container](#Install-Laravel)
-		- [Upgrading LaraDock](#upgrading-laradock)
+		- [Clientes](#Clientes)
+    - [Reportes](#MenusUSR)		
 - [Tools](#Tools)
 - [Help & Questions](#Help)
 
@@ -29,16 +30,22 @@ One Paragraph of project description goes here
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Es un sistema pensadopara ejecutarse de forma local por lo que debera ser instalado en una pc, ademas debera contar conel software correspondiente (definidos en requerimientos) para poder interactuar con el mismo.
+Los pasos para la instalacion no contemplan la instalacion del software base
 
 <a name="Requerimientos"></a>
 ### Requerimientos
 
-What things you need to install the software and how to install them
+Se debera contar con lo siguiente instalado previamente
+* PHP >= 5.6.4
+* MySql
+* Apache
+* Composer
 
-```
+
+o bien  XAMPP 
+
 Give examples
-```
 
 <a name="INstalacion"></a>
 ### Instalacion
