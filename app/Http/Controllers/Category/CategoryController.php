@@ -97,13 +97,10 @@ class CategoryController extends Controller
 
         //changei to blank
 
-
         $category = Category::find($id);
         $category->delete();
-
         flash('Categoria borrada exitosamente!!', 'success');
-        return view('admin.categories.index');
-      //  return redirect()->route('admin.categories.index');
+        return redirect()->back();
 
     }
 }
