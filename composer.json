@@ -10,7 +10,8 @@
         "styde/html": "~1.2",
         "graham-campbell/markdown": "^7.1",
         "styde/seeder": "^1.0",
-        "laracasts/flash": "^2.0"
+        "laracasts/flash": "^2.0",
+        "laravelcollective/html": "~5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
