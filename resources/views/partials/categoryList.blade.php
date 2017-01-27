@@ -4,8 +4,9 @@
         <td>{{$category->nombre }}</td>
         <td>{{$category->descripcion }}</td>
         <td>
-            <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> </a>
-            <a href="{{route('categories.destroy', $category->id)}}" onclick="return confirm('Desea eliminarlo?')" class="btn btn-danger"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> </a>
+            {!!   Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'DELETE'])  !!}
+                <button type="submit" title="Eliminar">  <i class="glyphicon glyphicon-trash"></i> </button>
+            {!!  Form::close()  !!}
         </td>
     </tr>
 @endforeach

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="panel-heading">Home</div>
 
                 <div class="panel-body">
-
+                   Bienvenido al Sistema de Gestion
                 </div>
             </div>
         </div>

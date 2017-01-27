@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
 
@@ -18,11 +18,9 @@
                             <tbody>
                                 @include('partials.categoryList');
                             </tbody>
-
-                            {{--Allow pagination--}}
-                            {{$categories->render()}}
-
                         </table>
+                        {{--Allow pagination--}}
+                        {{$categories->render()}}
                     </div>
                 </div>
             </div>
