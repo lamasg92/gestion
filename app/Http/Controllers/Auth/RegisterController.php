@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\{
+use App\Entities\{
     Role, User
 };
 use App\Http\Controllers\Controller;

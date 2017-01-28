@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Category;
 
-use App\Category;
+use App\Entities\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Styde\Html\Facades\Alert;

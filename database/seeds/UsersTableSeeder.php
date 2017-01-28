@@ -1,6 +1,6 @@
 <?php
 
-use App\{
+use App\Entities\{
     Role, User
 };
 use Illuminate\Database\Seeder;
