@@ -4,46 +4,47 @@
         @if (!Auth::guest())
             <li><a href="#">Facturas</a></li>
             <li><a href="#">Clientes</a></li>
-            <li><a href="#">Articulos</a></li>
-            <li><a href="{{ route('categories.index') }}">Categorias</a></li>
-            <li><a href="{{ route('roles.index') }}">Roles</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    Reportes <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-                        <a href="#"
-                           {{--{{ route('reoport.sales.user') }}--}}
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            Venta diaria
-                        </a>
+            @if(Auth::user()->isAdmin())
+                <li><a href="#">Articulos</a></li>
+                <li><a href="{{ route('categories.index') }}">Categorias</a></li>
+                <li><a href="{{ route('roles.index') }}">Roles</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Reportes <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#"
+                               {{--{{ route('reoport.sales.user') }}--}}
+                               onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                Venta diaria
+                            </a>
 
-                    </li>
-                    <li>
-                        <a href="#"
-                           {{--{{ route('reoport.sales.user') }}--}}
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            Venta por Cliente
-                        </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                               {{--{{ route('reoport.sales.user') }}--}}
+                               onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                Venta por Cliente
+                            </a>
 
-                    </li>
-                    <li>
-                        <a href="#"
-                           {{--{{ route('reoport.sales.user') }}--}}
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            Venta por Usuario
-                        </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                               {{--{{ route('reoport.sales.user') }}--}}
+                               onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                Venta por Usuario
+                            </a>
 
-                    </li>
+                        </li>
 
 
-                </ul>
-            </li>
-
+                    </ul>
+                </li>
+            @endif
 
         @endif
     </ul>
