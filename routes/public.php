@@ -6,7 +6,7 @@
  */
 
 Route::get('/', function () {
-    return view('app');
+    return view('welcome');
 });
 
 Auth::routes();
