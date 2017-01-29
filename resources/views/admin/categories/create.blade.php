@@ -10,7 +10,7 @@
 
                         {!! Form::open(['method' => 'POST', 'route' => 'categories.store']) !!}
 
-                            {!! Field::text('nombre') !!}
+                            @include('partials.categoryFields')
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">

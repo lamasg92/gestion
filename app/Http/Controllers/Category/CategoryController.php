@@ -49,6 +49,8 @@ class CategoryController extends Controller
 
         flash('Categoria creada exitosamente!!', 'success');
 
+        return redirect()->route('categories.index');
+
     }
 
     /**
@@ -70,7 +72,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+       $category = Category::findOrFail($id);
+
+        return view('admin.categories.edit', compact('$category'));
     }
 
     /**

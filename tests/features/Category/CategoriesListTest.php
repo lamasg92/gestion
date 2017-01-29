@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Category;
+use App\Entities\Category;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CategoriesListTest extends FeatureTestCase
