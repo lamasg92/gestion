@@ -1,7 +1,6 @@
 <?php
 
-use App\Role;
-use App\User;
+use App\Entities\{Role, User};
 
 abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
@@ -12,7 +11,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     protected $baseUrl = 'http://localhost';
     /**
-     * @var \App\User
+     * @var \App\Entities\User
      */
     protected $defaultUser;
     protected $adminUser;

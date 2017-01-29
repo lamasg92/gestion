@@ -1,6 +1,6 @@
 <?php
 
-use App\Role;
+use App\Entities\Role;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class RoleIntegrationTest extends TestCase

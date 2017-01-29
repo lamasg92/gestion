@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-use App\{User, Role};
+use App\Entities\{User, Role};
 
 class UserTest extends FeatureTestCase
 {

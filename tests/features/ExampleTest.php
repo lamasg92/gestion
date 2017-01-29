@@ -11,7 +11,7 @@ class ExampleTest extends FeatureTestCase
 
     function test_basic_example()
     {
-        $user = factory(App\User::class)->create([
+        $user = factory(App\Entities\User::class)->create([
             'name' => 'Valentin Plechuc',
         ]);
 
