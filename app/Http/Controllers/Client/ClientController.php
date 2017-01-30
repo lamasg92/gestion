@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Entities\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::paginate();
+
+        return view('clients.index', compact('clients'));
     }
 
     /**
@@ -24,7 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
     /**
@@ -35,7 +38,17 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation nombre required and email required and unique
+        $this->validate($request, [
+            'nombre' => 'required',
+            'email' => 'required|unique:clients'
+        ]);
+        //saves
+        Client::create($request->all());
+
+        flash('Cliente creado exitosamente!!', 'success');
+
+        return redirect()->route('clients.index');
     }
 
     /**
