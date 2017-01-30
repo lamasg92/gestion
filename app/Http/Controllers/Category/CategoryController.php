@@ -74,7 +74,7 @@ class CategoryController extends Controller
     {
        $category = Category::findOrFail($id);
 
-        return view('admin.categories.edit', compact('$category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -84,9 +84,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->fill($request->all());
+        $category->save();
+        flash('Categoria Actualizada exitosamente!!', 'success');
+        return redirect()->route('categories.index');
+
     }
 
     /**
@@ -97,10 +102,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //find all product with this categoryID
-
-        //changei to blank
-
         $category = Category::find($id);
         $category->delete();
         flash('Categoria borrada exitosamente!!', 'success');
