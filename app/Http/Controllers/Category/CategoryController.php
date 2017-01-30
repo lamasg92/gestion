@@ -40,9 +40,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //validation
+        //validation nombre required and unique
         $this->validate($request, [
-            'nombre' => 'required'
+            'nombre' => 'required|unique:categories'
         ]);
         //saves
         Category::create($request->all());
