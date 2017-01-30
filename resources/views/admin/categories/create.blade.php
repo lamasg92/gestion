@@ -14,8 +14,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                   <button type="submit" class="btn btn-primary">Aceptar</button>
-                                    <button type="button" class="btn btn-default">Cancelar</button>
+                                   <button type="submit" class="btn btn-primary">Crear</button>
                                 </div>
                             </div>
 
