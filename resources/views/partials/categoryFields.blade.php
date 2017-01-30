@@ -1,3 +1,3 @@
-{!! Field::text('nombre') !!}
+{!! Field::text('nombre', null ,['class' => 'form-control']) !!}
 
-{!! Field::text('descripcion') !!}
+{!! Field::text('descripcion', null ,['class' => 'form-control']) !!}

@@ -48,6 +48,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"></script>
 
 
+
 <script>$('div.alert').not('.alert-important').delay(3000).fadeOut(350);</script>
 
 </body>

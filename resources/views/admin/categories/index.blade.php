@@ -8,13 +8,13 @@
                     <div id=panel-tittle class="panel-heading">Categorias</div>
                     <div class="panel-body">
 
-                        {!! Form::open(['method' => 'GET', 'route' => 'categories.create']) !!}
+                        <a href="{{route('categories.create')}}" class="btn btn-info">
+                            <i class="glyphicon glyphicon-new-window"></i>
+                            Nueva
+                        </a>
 
-                                <div class="col-md-6 col-md-offset-10">
-                                    <button type="submit" class="btn btn-primary">Nueva</button>
-                                </div>
 
-                            <table class="table table-striped">
+                        <table class="table table-striped">
                                 <thead>
                                     <th>ID</th>
                                     <th>Nombre</th>
@@ -27,7 +27,6 @@
                             </table>
                             {{--Allow pagination--}}
                             {{$categories->render()}}
-                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
