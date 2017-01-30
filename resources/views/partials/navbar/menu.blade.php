@@ -3,7 +3,7 @@
     <ul class="nav navbar-nav">
         @if (!Auth::guest())
             <li><a href="#">Facturas</a></li>
-            <li><a href="#">Clientes</a></li>
+            <li><a href="{{ route('clients.index') }}">Clientes</a></li>
             @if(Auth::user()->isAdmin())
                 <li><a href="#">Articulos</a></li>
                 <li><a href="{{ route('categories.index') }}">Categorias</a></li>
@@ -17,10 +17,13 @@
                             <a href="#"
                                {{--{{ route('reoport.sales.user') }}--}}
                                onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                                         document.getElementById('vta-diaria-form').submit();">
                                 Venta diaria
                             </a>
-
+                            <form id="vta-diaria-form" action="{{ route('logout') }}" method="POST"
+                                  style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                         </li>
                         <li>
                             <a href="#"
