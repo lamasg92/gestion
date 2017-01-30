@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Category;
 use App\Entities\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Styde\Html\Facades\Alert;
+
 
 class CategoryController extends Controller
 {
@@ -14,10 +14,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
-        $categories = Category::paginate();
+        //search options
+        $categories = Category::name($request->get('nombre'))->orderby('id', 'DESC')->paginate();
 
         return view('admin.categories.index', compact('categories'));
     }

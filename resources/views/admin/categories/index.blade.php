@@ -13,6 +13,12 @@
                             Nueva
                         </a>
 
+                        {!! Form::open(['route' => 'categories.index', 'method'=>'GET', 'class'=>'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
+                            <div class="form-group">
+                                {!! Form::text('nombre', null, ['class'=>'form-control', 'placeholder'=>'Nombre Ctegoria']) !!}
+                            </div>
+                            <button type="submit" class="btn btn-default">Buscar</button>
+                        {!! Form::close() !!}
 
                         <table class="table table-striped">
                                 <thead>
