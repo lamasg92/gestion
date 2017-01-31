@@ -32,9 +32,17 @@
         </div>
     </nav>
 
-    <div class="container" xmlns="http://www.w3.org/1999/html">
-        @include('flash::message')
-        @yield('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+
+                    @include('flash::message')
+                    @yield('content')
+
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
