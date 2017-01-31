@@ -28,4 +28,9 @@ Route::get('invoice/index', [
     'as' => 'invoice.index',
 ]);
 
+Route::get('invoice/create', [
+    'uses' => 'Invoice\InvoiceController@create',
+    'as' => 'invoice.create',
+]);
+
 

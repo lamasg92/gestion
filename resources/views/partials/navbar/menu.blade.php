@@ -44,7 +44,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                Cambio Rol
+                                Usuarios
                             </a>
 
                         </li>
