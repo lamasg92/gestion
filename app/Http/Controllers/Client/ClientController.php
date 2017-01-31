@@ -13,9 +13,9 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $clients = Client::paginate();
+        $clients = Client::name($request->get('nombre'))->orderby('id', 'DESC')->paginate();
 
         return view('clients.index', compact('clients'));
     }
@@ -41,7 +41,8 @@ class ClientController extends Controller
         //validation nombre required and email required and unique
         $this->validate($request, [
             'nombre' => 'required',
-            'email' => 'required|unique:clients'
+            'telefono' => 'numeric',
+            'email' => 'required|email|max:255|unique:clients'
         ]);
         //saves
         Client::create($request->all());
@@ -70,7 +71,9 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::findOrFail($id);
+
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -82,7 +85,11 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->fill($request->all());
+        $client->save();
+        flash('Cliente Actualizado exitosamente!!', 'success');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -93,6 +100,9 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::find($id);
+        $client->delete();
+        flash('Cliente borrado exitosamente!!', 'success');
+        return redirect()->back();
     }
 }
