@@ -1,19 +1,18 @@
 @foreach($clients as $client)
     <tr>
-        <td>{{$category->nombre }}</td>
-        <td>{{$category->apellido }}</td>
-        <td>{{$category->direccion }}</td>
-        <td>{{$category->telefono }}</td>
-        <td>{{$category->email }}</td>
+        <td>{{$client->nombre }}</td>
+        <td>{{$client->apellido }}</td>
+        <td>{{$client->direccion }}</td>
+        <td>{{$client->telefono }}</td>
+        <td>{{$client->email }}</td>
         <td >
 
-            <a href="{{ route('clients.edit', $client ) }}" class="btn btn-info">
-                <i class="glyphicon glyphicon-edit"></i>
-                Editar
-            </a>
+            {!! Form::open(['method' => 'GET', 'route' => ['clients.edit', $client]]) !!}
+                <button type="submit" class="btn "> <i class="glyphicon glyphicon-edit"></i></button>
+            {!! Form::close() !!}
 
             {!! Form::open(['method' => 'DELETE', 'route' => ['clients.destroy', $client]]) !!}
-            <button type="submit" class="btn btn-primary"> <i class="glyphicon glyphicon-trash"></i>Eliminar</button>
+            <button type="submit" class="btn"> <i class="glyphicon glyphicon-trash"></i></button>
             {!! Form::close() !!}
 
         </td>
