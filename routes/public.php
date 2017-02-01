@@ -18,19 +18,4 @@ Route::get('home', [
 ]);
 
 
-//clients routes
-
-Route::resource('clients', 'Client\ClientController');
-
-//Invoice routes
-Route::get('invoice/index', [
-    'uses' => 'Invoice\InvoiceController@index',
-    'as' => 'invoice.index',
-]);
-
-Route::get('invoice/create', [
-    'uses' => 'Invoice\InvoiceController@create',
-    'as' => 'invoice.create',
-]);
-
 

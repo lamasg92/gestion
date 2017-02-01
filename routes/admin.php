@@ -28,4 +28,5 @@ Route::resource('roles', 'Role\RoleController');
 //    'uses' => 'Role\RoleController@edit',
 //    'as' => 'roles.edit',
 //]);
-
+//Articles routes
+Route::resource('articles', 'Article\ArticleController');
