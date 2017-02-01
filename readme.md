@@ -1,15 +1,15 @@
 # Sistema de Gestion - Proyecto de Habilitación Tecnicatura Superior en Tecnologías de Informacion
                     
 <a name="Intro"></a>
-## Intro
+## Introduccion
 Sistema de Gestion de Factuas que permite la facturacion  de un producto, ademas de la gestion de Usuarios, Clientes y Roles de Usuario.
 El sistema presenta la funcionalidad de acceso por logueo y Registro de nuevo Usuario como asi tambien permite la recuperacion de claves y reset de la misma
 
 
-## Contents
+## Contenido
 
-- [Intro](#Intro)
-	- [Features](#features)
+- [Introduccion](#Intro)
+	- [Getting Started](#start)
 
 - [Requerimientos](#Requerimientos)
 - [Instalacion](#Instalacion)
@@ -27,10 +27,10 @@ El sistema presenta la funcionalidad de acceso por logueo y Registro de nuevo Us
 - [Help & Questions](#Help)
 
 
-
+<a name="start"></a>
 ## Getting Started
 
-Es un sistema pensadopara ejecutarse de forma local por lo que debera ser instalado en una pc, ademas debera contar conel software correspondiente (definidos en requerimientos) para poder interactuar con el mismo.
+Es un sistema pensado para ejecutarse de forma local por lo que debera ser instalado en una pc, ademas debera contar conel software correspondiente (definidos en requerimientos) para poder interactuar con el mismo.
 Los pasos para la instalacion no contemplan la instalacion del software base
 
 <a name="Requerimientos"></a>
@@ -52,10 +52,12 @@ Give examples
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+configuracion del puerto y modulos habilitados para Apache
 
 ```
-Give the example
+Listen 8081
+...
+LoadModule rewrite_module modules/mod_rewrite.so
 ```
 
 And repeat
