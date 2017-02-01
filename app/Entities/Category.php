@@ -15,4 +15,8 @@ class Category extends Model
            $query->where('nombre', 'LIKE', "%$name%");
        }
    }
+
+   public function articles(){
+       return $this->hasMany(Article::class);
+   }
 }
