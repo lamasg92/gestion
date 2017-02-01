@@ -5,7 +5,7 @@
     <div class="panel-heading">Edicion Cliente</div>
     <div class="panel-body">
 
-        {!! Form::model($client, ['method' => 'PUT', 'route' => ['clients.update', $client]]) !!}
+        {!! Form::model($article, ['method' => 'PUT', 'route' => ['clients.update', $article]]) !!}
 
             {{--@include('partials.clientFields')--}}
 

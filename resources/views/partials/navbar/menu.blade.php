@@ -28,7 +28,7 @@
             <li><a href="{{ route('clients.index') }}">Clientes</a></li>
 
             @if(Auth::user()->isAdmin())
-                <li><a href="#">Articulos</a></li>
+                <li><a href="{{ route('articles.index') }}">Articulos</a></li>
                 <li><a href="{{ route('categories.index') }}">Categorias</a></li>
 
 
