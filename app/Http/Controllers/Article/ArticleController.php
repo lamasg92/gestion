@@ -22,6 +22,7 @@ class ArticleController extends Controller
             $articles->category;
         });
 
+        //dd($articles);
         return view('admin.articles.index', compact('articles'));
     }
 
@@ -49,10 +50,9 @@ class ArticleController extends Controller
         $this->validate($request, [
             'nombre' => 'required',
             'descripcion' => 'required',
-            'stock' => 'required|digits',
-            'precio_unitario' => 'required|digits',
-            'category_id' => 'required'
+            'stock' => 'required|numeric',
         ]);
+
         //saves
         Article::create($request->all());
 
@@ -81,9 +81,11 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
+
+        $categories =  Category::pluck('nombre', 'id');
         $article = Article::findOrFail($id);
 
-        return view('admin.articles.edit', compact('article'));
+        return view('admin.articles.edit', compact('categories', 'article'));
     }
 
     /**

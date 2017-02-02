@@ -7,7 +7,7 @@
 
         <a href="{{route('articles.create')}}" class="btn btn-info">
             <i class="glyphicon glyphicon-new-window"></i>
-            Nueva
+            Nuevo
         </a>
 
         {!! Form::open(['route' => 'articles.index', 'method'=>'GET', 'class'=>'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
@@ -21,7 +21,7 @@
         <table class="table table-striped">
                 <thead>
                     <th>Nombre</th>
-                    <th>Detalle</th>
+                    <th>Descripcion</th>
                     <th>Stock</th>
                     <th>Categoria</th>
                     <th>Precio Unitario</th>

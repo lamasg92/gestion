@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $fillable = ['nombre', 'descripcion', 'stock', 'precio_unitario'];
+    protected $fillable = ['nombre', 'descripcion', 'category_id', 'stock', 'precio_unitario'];
 
     public function scopeName($query, $name){
         //search with partial name
@@ -18,4 +18,9 @@ class Article extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    public function invoice_details(){
+        return $this->belongsTo(Invoice_Detail::class);
+    }
+
 }

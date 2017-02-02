@@ -2,12 +2,12 @@
 
 @section('content')
 
-    <div class="panel-heading">Edicion Cliente</div>
+    <div class="panel-heading">Edicion Articulo</div>
     <div class="panel-body">
 
-        {!! Form::model($article, ['method' => 'PUT', 'route' => ['clients.update', $article]]) !!}
+        {!! Form::model($article, ['method' => 'PUT', 'route' => ['articles.update', $article]]) !!}
 
-            {{--@include('partials.clientFields')--}}
+         @include('partials.articlesFieldsCreate')
 
         <div class="form-group">
             <div class="col-md-6 col-md-offset-4">

@@ -1,12 +1,12 @@
 @foreach($articles as $article)
     <tr>
         <td>{{$article->nombre }}</td>
-        <td>{{$article->detalle }}</td>
+        <td>{{$article->descripcion }}</td>
         <td>{{$article->stock }}</td>
 
         <td>{{$article->category->nombre }}</td>
 
-        <td>{{$article->presio_unitario }}</td>
+        <td>{{$article->precio_unitario }}</td>
         <td >
 
             {!! Form::open(['method' => 'GET', 'route' => ['articles.edit', $article]]) !!}
