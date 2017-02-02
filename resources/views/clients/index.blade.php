@@ -7,7 +7,7 @@
 
         <a href="{{route('clients.create')}}" class="btn btn-info">
             <i class="glyphicon glyphicon-new-window"></i>
-            Nueva
+            Nuevo
         </a>
 
 
