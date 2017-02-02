@@ -26,3 +26,8 @@ Route::get('invoice/create', [
     'uses' => 'Invoice\InvoiceController@create',
     'as' => 'invoice.create',
 ]);
+
+Route::post('invoice/store', [
+    'uses' => 'Invoice\InvoiceController@store',
+    'as' => 'invoice.store',
+]);

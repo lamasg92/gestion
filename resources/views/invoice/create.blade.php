@@ -13,9 +13,9 @@
         {!! Form::close() !!}
 
 
-        {!! Form::open(['route' => 'categories.index', 'method'=>'GET', 'class'=>'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
+        {!! Form::open(['route' => 'clients.index', 'method'=>'GET', 'class'=>'navbar-form navbar-left pull-right', 'role' => 'search']) !!}
             <div class="form-group">
-                {!! Form::text('nombre', null, ['class'=>'form-control', 'placeholder'=>'Nombre Ctegoria']) !!}
+                {!! Form::text('nombre', null, ['class'=>'form-control', 'placeholder'=>'Nombre Cliente']) !!}
             </div>
             <button type="submit" class="btn btn-default">Buscar</button>
         {!! Form::close() !!}
