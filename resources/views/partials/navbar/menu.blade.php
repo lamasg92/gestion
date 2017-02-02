@@ -3,27 +3,7 @@
     <ul class="nav navbar-nav">
         @if (!Auth::guest())
             {{--<li><a href="#">Facturas</a></li>--}}
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    Facturas <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-                        <a href="{{ route('invoice.create') }}" >
-                            Nueva
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                           onclick="event.preventDefault();
-                                                         document.getElementById('invoice-search').submit();">
-                            Buscar
-                        </a>
-
-                    </li>
-                </ul>
-            </li>
-
+            <li><a href="{{ route('invoice.index') }}">Facturacion</a></li>
 
             <li><a href="{{ route('clients.index') }}">Clientes</a></li>
 
