@@ -17,5 +17,16 @@ Route::get('home', [
     'as' => 'home',
 ]);
 
+//rotes for search autocomplete
+
+Route::get('invoice/articles', [
+    'uses' => 'Invoice\InvoiceController@articles',
+    'as' => 'invoice.articles',
+]);
+
+Route::get('invoice/users', [
+    'uses' => 'Invoice\InvoiceController@users',
+    'as' => 'invoice.users',
+]);
 
 

@@ -18,7 +18,8 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="{{ route('roles.index') }}">
+                            <a href="{{ route('roles.index') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                                 Roles
                             </a>
                         </li>

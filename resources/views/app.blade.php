@@ -12,11 +12,14 @@
     <title>{{ config('app.name', 'Gestion') }}</title>
 
     <!-- Styles -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">--}}
 
-   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+   @yield('styles')
 
 </head>
 <body>
@@ -48,14 +51,15 @@
 </div>
 
 <!-- Scripts -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+{{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>--}}
+
 <script src="{{ asset('js/app.js') }}"></script>
 
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"></script>
-
-
+@yield('scripts')
 
 <script>$('div.alert').not('.alert-important').delay(3000).fadeOut(350);</script>
 
