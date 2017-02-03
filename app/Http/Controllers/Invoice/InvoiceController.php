@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Invoice;
 
-use App\Entities\Invoice;
+use App\Entities\{Article, Invoice, User};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,6 +17,22 @@ class InvoiceController extends Controller
 
         return view('invoice.index', compact('invoices'));
     }
+
+    public function articles(Request $request)
+    {
+        $term = Request::get('term');
+
+        return Article::findByNameorDescription($term);
+
+    }
+
+    public function user(Request $request)
+    {
+        $term = Request::get('term');
+
+        return User::findByNameorUserName($term);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -43,6 +59,8 @@ class InvoiceController extends Controller
     {
         //showinvoice info
     }
+
+
 
 
     public function storepdf()
