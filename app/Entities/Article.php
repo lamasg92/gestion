@@ -23,4 +23,12 @@ class Article extends Model
         return $this->belongsTo(Invoice_Detail::class);
     }
 
+    public static function findByNameorDescription($term){
+        return Article::select('id', 'nombre', 'descripcion', 'category_id', 'precio_unitario')
+                        ->where('nombre', 'LIKE', '%term%')
+                        ->orWhere('descripcion', 'LIKE', '%term%')
+                        ->get();
+    }
+
+
 }
