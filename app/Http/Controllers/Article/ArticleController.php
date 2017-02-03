@@ -50,6 +50,7 @@ class ArticleController extends Controller
         $this->validate($request, [
             'nombre' => 'required',
             'descripcion' => 'required',
+            'precio_unitario' => 'required|regex:/[\d]{1,10},[\d]{2}/',
             'stock' => 'required|numeric',
         ]);
 
