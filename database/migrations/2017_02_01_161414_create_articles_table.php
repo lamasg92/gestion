@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('descripcion');
             $table->integer('stock')->nullable(false);
             $table->integer('category_id')->nullable(false);
-            $table->decimal('precio_unitario',10,2);
+            $table->float('precio_unitario',8,2);
             $table->timestamps();
         });
     }
