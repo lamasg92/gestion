@@ -48,10 +48,12 @@ class User extends Authenticatable
         return $this->hasMany(Invoice::class);
     }
 
-    public static function findByNameorUserName($term){
-      return User::select('id'. 'name', 'username')
-                    ->where('name', 'LIKE', '%term%')
-                    ->orWhere('username', 'LIKE', '%term%')
-                    ->get();
+
+    public static function findByNameorUserName($term)
+    {
+        return static::select('id', 'name', 'username')
+            ->where('name', 'LIKE', "%$term%")
+            ->orWhere('username', 'LIKE', "%$term%")
+            ->get();
     }
 }
