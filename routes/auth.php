@@ -5,6 +5,9 @@
  * Date: 05/01/2017
  * Time: 11:31 PM
  */
+use App\Entities\Article;
+use App\Entities\User;
+
 
 
 /**
@@ -17,17 +20,33 @@
 Route::resource('clients', 'Client\ClientController');
 
 //Invoice routes
-Route::get('invoice/index', [
+Route::get('invoices/index', [
     'uses' => 'Invoice\InvoiceController@index',
-    'as' => 'invoice.index',
+    'as' => 'invoices.index',
 ]);
 
-Route::get('invoice/create', [
+Route::get('invoices/create', [
     'uses' => 'Invoice\InvoiceController@create',
-    'as' => 'invoice.create',
+    'as' => 'invoices.create',
 ]);
 
-Route::post('invoice/store', [
+Route::post('invoices/store', [
     'uses' => 'Invoice\InvoiceController@store',
-    'as' => 'invoice.store',
+    'as' => 'invoices.store',
 ]);
+
+
+Route::get('invoices/users', function (){
+
+    $term = Request::get('term');
+
+    return User::findByNameorUserName($term);
+});
+
+Route::get('invoices/articles', function (){
+
+    $term = Request::get('term');
+
+    return Article::findByNameorDescription($term);
+});
+
