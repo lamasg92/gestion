@@ -3,7 +3,7 @@
     <ul class="nav navbar-nav">
         @if (!Auth::guest())
             {{--<li><a href="#">Facturas</a></li>--}}
-            <li><a href="{{ route('invoice.index') }}">Facturacion</a></li>
+            <li><a href="{{ route('invoices.index') }}">Facturacion</a></li>
 
             <li><a href="{{ route('clients.index') }}">Clientes</a></li>
 
