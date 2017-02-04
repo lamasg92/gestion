@@ -24,9 +24,13 @@ Route::resource('categories', 'Category\CategoryController');
 
 Route::resource('roles', 'Role\RoleController');
 //
-//Route::get('roles/edit', [
-//    'uses' => 'Role\RoleController@edit',
-//    'as' => 'roles.edit',
-//]);
+
 //Articles routes
 Route::resource('articles', 'Article\ArticleController');
+
+
+//users routes
+Route::resource('users', 'Users\UsersController',
+    ['only' => ['index', 'edit', 'update', 'destroy' ]]);
+
+
