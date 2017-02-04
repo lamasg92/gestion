@@ -56,4 +56,11 @@ class User extends Authenticatable
             ->orWhere('username', 'LIKE', "%$term%")
             ->get();
     }
+
+    public function scopeName($query, $name){
+        //search with partial name
+        if(trim($name)!= "") {
+            $query->where('name', 'LIKE', "%$name%");
+        }
+    }
 }
