@@ -6,45 +6,131 @@
 
 
 @section('content')
-    <div class="panel-heading">Facturacion</div>
-    <div class="panel-body">
+ <div class="panel-heading">Facturacion</div>
+  <div class="panel-body">
 
-        {!! Field::text('fecha', null ,['class' => 'form-control']) !!}
-        {!! Field::text('numero', null ,['class' => 'form-control']) !!}
-
-
-        <div class="form-group">
-            {!! Form::open([ 'class'=>'form']) !!}
-               {!! Field::text('article',  ['class'=>'easy-autocomplete']) !!}
-            {!! Form::close() !!}
-
-            {!! Form::open([ 'class'=>'form']) !!}
-                {!! Field::text('user',  ['class'=>'easy-autocomplete']) !!}
-                {!! Field::hidden('user_id', null, ['id' => 'user_id']) !!}
-            {!! Form::close() !!}
-
-        </div>
     {!! Form::open(['method' => 'POST', 'route' => 'invoices.store']) !!}
 
-        <div class="form-group">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    {!! Field::text('fecha') !!}
+                </div>
+                <div class="col-md-3">
 
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                    {!! Field::text('numero') !!}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
 
+                    {!! Form::open([ 'class'=>'form']) !!}
+                        {!! Field::text('article',  ['class'=>'easy-autocomplete']) !!}
+                    {!! Form::close() !!}
 
-        </div>
-        <div class="form-group">
-            {!! Form::label('payment_id', 'Forma de Pago') !!}
-            {!! Form::select('payment_id', $payments, null, ['class' => 'form-control', 'placeholder' => 'Seleccion una opcion', 'required'])!!}
-        </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-4">
 
-        <div class="form-group">
-            <div class="col-md-6 col-md-offset-4">
-                <button type="submit" class="btn btn-primary">Grabar</button>
+                    {!! Form::open([ 'class'=>'form']) !!}
+                    {!! Field::text('user',  ['class'=>'easy-autocomplete']) !!}
+                    {!! Field::hidden('user_id', null, ['id' => 'user_id']) !!}
+                    {!! Form::close() !!}
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id Articulo                            </th>
+                                <th>Descripcion                            </th>
+                                <th>Cantidad                            </th>
+                                <th>Precio Unitario                            </th>
+                                <th>Total                            </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="active">
+                            <td>                                1                            </td>
+                            <td>                               art                           </td>
+                            <td>                               10                          </td>
+                            <td>                                5                           </td>
+                            <td>                                50                          </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <span class="label label-default">Importe Total </span>
+                                </div>
+                                <div class="col-md-4">
+                                      <p>
+                                        Aca va el importe total de la factura
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="label label-default">Medio de Pago</span>
+                </div>
+                <div class="col-md-4">
+                    <div class="btn-group">
+
+                        <div class="form-group">
+                            {!! Form::label('payment_id', 'Medio de pago') !!}
+                            {!! Form::select('payment_id', $payments, null, ['class' => 'form-control', 'placeholder' => 'Seleccione una opcion', 'required'])!!}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        cupon de la tarjeta
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+
+                    <button type="button" class="btn btn-primary btn-lg">
+                        Grabar
+                    </button>
+                </div>
+                <div class="col-md-4">
+
+                    <button type="button" class="btn btn-primary btn-lg">
+                        Imprimir
+                    </button>
+                </div>
+                <div class="col-md-4">
+
+                    <button type="button" class="btn btn-warning">
+                        Cancelar
+                    </button>
+                </div>
             </div>
         </div>
 
     {!! Form::close() !!}
 
-    </div>
+  </div>
 
 
 @endsection

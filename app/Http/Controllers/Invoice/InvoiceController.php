@@ -21,7 +21,7 @@ class InvoiceController extends Controller
     public function create(Request $request)
     {
         //search options
-        $payments = Payment::all();
+        $payments =  Payment::pluck('nombre', 'id');
 
         return view('invoice.create', compact('payments'));
     }
