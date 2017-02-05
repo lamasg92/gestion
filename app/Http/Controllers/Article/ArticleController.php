@@ -16,14 +16,14 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         //search options
-        $articles = Article::name($request->get('nombre'))->orderby('id', 'ASC')->paginate();
+        $articles = Article::name($request->get('nombre'))->orderby('id', 'ASC')->paginate(10);
 
         $articles->each(function ($articles){
             $articles->category;
         });
 
         //dd($articles);
-        return view('admin.users.index', compact('users'));
+        return view('admin.articles.index', compact('articles'));
     }
 
     /**
@@ -31,12 +31,12 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function create()
-//    {
-//        $categories =  Category::pluck('nombre', 'id');
-//
-//        return view('admin.articles.create', compact('categories'));
-//    }
+    public function create()
+    {
+        $categories =  Category::pluck('nombre', 'id');
+
+        return view('admin.articles.create', compact('categories'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -46,19 +46,22 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        //validation nombre required and unique
+        $this->validate($request, [
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'precio_unitario' => 'required|numeric|min:0|max:9999.99\'',
+            'stock' => 'required|numeric',
+        ]);
 
+        //saves
+        Article::create($request->all());
+
+        flash('Articulo creado exitosamente!!', 'success');
+
+        return redirect()->route('articles.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
