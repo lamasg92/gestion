@@ -6,7 +6,7 @@ use Styde\Seeder\Seeder;
 
 class ArticleTableSeeder extends Seeder
 {
-    protected $total = 50;
+    protected $total = 20;
 
     public function getModel()
     {
