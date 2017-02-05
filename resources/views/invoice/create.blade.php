@@ -11,6 +11,8 @@
 
     {!! Form::open(['method' => 'POST', 'route' => 'invoices.store']) !!}
 
+
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3">
@@ -26,69 +28,74 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
 
-                    {!! Form::open([ 'class'=>'form']) !!}
-                        {!! Field::text('user',  ['class'=>'easy-autocomplete']) !!}
-                        {!! Field::hidden('user_id', null, ['id' => 'user_id']) !!}
-                    {!! Form::close() !!}
+                    <div class="well well-sm">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input id="user" class="form-control typeahead" type="text" placeholder="user" />
+                            </div>
 
-                </div>
-                <div class="col-md-8">
-                    {!! Field::Text('username', null, ['id' => 'username']) !!}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    {!! Form::open([ 'class'=>'form']) !!}
-                    {!! Field::text('article',  ['class'=>'easy-autocomplete']) !!}
-                    {!! Field::hidden('article_id', null, ['id' => 'article_id']) !!}
-
-                    <a href="{{route('invoices.create')}}" class="btn btn-info">
-                        <i class="glyphicon glyphicon-new-window"></i>
-                        Nueva
-                    </a>
-
-                    {!! Form::close() !!}
-
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Id Articulo                            </th>
-                                <th>Descripcion                            </th>
-                                <th>Cantidad                            </th>
-                                <th>Precio Unitario                            </th>
-                                <th>Total                            </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="active">
-                            <td>                                1                            </td>
-                            <td>                               art                           </td>
-                            <td>                               10                          </td>
-                            <td>                                5                           </td>
-                            <td>                                50                          </td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-8">
-
-                                </div>
-                                <div class="col-md-4">
-                                    {!! Field::text('Total') !!}
-
-                                </div>
+                            <div class="col-xs-4">
+                                <input class="form-control" type="text" placeholder="Dirección" readonly value="{username}" />
                             </div>
                         </div>
                     </div>
+
+                <div class="row">
+                    <div class="col-xs-7">
+                        <input id="article" class="form-control" type="text" placeholder="Nombre del producto" />
+                    </div>
+                    <div class="col-xs-2">
+                        <input id="cantidad" class="form-control" type="text" placeholder="Cantidad" />
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Precio" value="{precio}" readonly />
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <button onclick={agregarProducto} class="btn btn-primary form-control" id="btn-agregar">
+                            <i class="glyphicon glyphicon-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th style="width:40px;"></th>
+                            <th>Id</th>
+                            <th>Producto</th>
+                            <th style="width:100px;">Cantidad</th>
+                            <th style="width:100px;">Precio Unitario</th>
+                            <th style="width:100px;">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr each={detail}>
+                            <td>
+                                <button onclick={deleteDetailRow} class="btn btn-danger btn-xs">X</button>
+                            </td>
+                            <td>{id}</td>
+                            <td>{nombre}</td>
+                            <td class="text-right">{cantidad}</td>
+                            <td class="text-right">$ {precio}</td>
+                            <td class="text-right">$ {total}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+
+                        <tr>
+                            <td colspan="4" class="text-right"><b>Total</b></td>
+                            <td class="text-right">$ {total}</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
                 </div>
             </div>
             <div class="row">
@@ -187,7 +194,7 @@
                 $('#user_id').val('');
 
             });
-          
+
         });
     </script>
     <script>
