@@ -9,14 +9,12 @@
  <div class="panel-heading">Facturacion</div>
   <div class="panel-body">
 
-    {!! Form::open(['method' => 'POST', 'route' => 'invoices.store']) !!}
-
-
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3">
-                    {!! Field::text('fecha') !!}
+                    <label for="fecha">Fecha</label>
+                    <input class="form-control" type="text" placeholder="Fecha" readonly name="fecha"  value="{{ Carbon\Carbon::today()->format('d-m-Y ' )}}"/>
                 </div>
                 <div class="col-md-3">
 
@@ -24,9 +22,15 @@
                 <div class="col-md-3">
                 </div>
                 <div class="col-md-3">
-                    {!! Field::text('numero') !!}
+                    <label for="numeroF">Numero Factura</label>
+                    <input class="form-control" type="text" placeholder="Numero" readonly name="numeroF" />
                 </div>
             </div>
+
+            <hr />
+            <hr />
+
+
             <div class="row">
 
                     <div class="well well-sm">
@@ -36,10 +40,10 @@
                             </div>
 
                             <div class="col-xs-6">
-                                <input class="form-control" type="text" placeholder="Dirección" readonly value="direccion" />
+                                <input class="form-control" type="text" placeholder="Dirección" readonly id="direccion" />
                             </div>
                             <div class="col-xs-2">
-                                <input class="form-control" type="text" placeholder="Email" readonly value="email" />
+                                <input class="form-control" type="text" placeholder="Email" readonly id="email" />
                             </div>
                         </div>
                     </div>
@@ -53,17 +57,20 @@
                     </div>
                     <div class="col-xs-2">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Precio" value="precio" readonly />
+                            <input class="form-control" type="text" placeholder="Precio" id="precio" readonly />
                         </div>
                     </div>
                     <div class="col-xs-1">
-                        <button onclick={agregarProducto} class="btn btn-primary form-control" id="btn-agregar">
+                        <button onclick="agregarProducto()" class="btn btn-primary form-control" id="btn-agregar">
                             <i class="glyphicon glyphicon-plus"></i>
                         </button>
                     </div>
                 </div>
 
             </div>
+
+            <hr />
+            <hr />
 
             <div class="row">
                 <div class="col-md-12">
@@ -74,27 +81,27 @@
                             <th>Id</th>
                             <th>Producto</th>
                             <th style="width:100px;">Cantidad</th>
-                            <th style="width:100px;">Precio Unitario</th>
+                            <th style="width:100px;">P. Unitario</th>
                             <th style="width:100px;">Total</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr each={detail}>
                             <td>
-                                <button onclick={deleteDetailRow} class="btn btn-danger btn-xs">X</button>
+                                <button onclick="deleteDetailRow()" class="btn btn-danger btn-xs">X</button>
                             </td>
-                            <td>{id}</td>
-                            <td>{nombre}</td>
-                            <td class="text-right">{cantidad}</td>
-                            <td class="text-right">$ {precio}</td>
-                            <td class="text-right">$ {total}</td>
+                            <td>id</td>
+                            <td>@{{ nombre }}</td>
+                            <td class="text-right">@{{ cantidad }}</td>
+                            <td class="text-right">$ @{{ precio }}</td>
+                            <td class="text-right">$ @{{ total }}</td>
                         </tr>
                         </tbody>
                         <tfoot>
 
                         <tr>
                             <td colspan="4" class="text-right"><b>Total</b></td>
-                            <td class="text-right">$ {total}</td>
+                            <td class="text-right">$ @{{ total }}</td>
                         </tr>
                         </tfoot>
                     </table>
@@ -121,27 +128,17 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-
-                    <button type="button" class="btn btn-primary btn-lg">
-                        Grabar
-                    </button>
+                  <button  id="grabar" class="btn btn-primary btn-lg">Grabar</button>
                 </div>
                 <div class="col-md-4">
-
-                    <button type="button" class="btn btn-primary btn-lg">
-                        Imprimir
-                    </button>
+                    <button type="button" class="btn btn-primary btn-lg">Imprimir</button>
                 </div>
                 <div class="col-md-4">
-
-                    <button type="button" class="btn btn-warning">
-                        Cancelar
-                    </button>
+                    <button type="button" class="btn btn-warning">Cancelar</button>
                 </div>
             </div>
         </div>
 
-    {!! Form::close() !!}
 
   </div>
 
@@ -152,27 +149,105 @@
     <script src="{{ asset('js/jquery.easy-autocomplete.js') }}"></script>
 
     <script>
+
+        //self data
+        var self = this;
+        self.client_id = 0;
+        self.detail = [];
+        self.total = 0;
+
+
+        //funtions for detail table
+        function agregarProducto()
+        {
+            self.detail.push({
+                id: self.article_id,
+                name: self.article.value,
+                quantity: parseInt(self.cantidad.value),
+                price: parseFloat(self.precio),
+                total: parseFloat(self.precio * self.cantidad.value)
+            });
+
+            cleanInfo();
+            calcularTotales();
+        }
+
+        function calcularTotales() {
+            var total = 0;
+
+            self.detail.forEach(function(e){
+                total += e.total;
+            });
+
+            self.total = total;
+        }
+
+        function cleanInfo() {
+            self.article_id = 0;
+            self.article.value = '';
+            self.cantidad.value = '';
+            self.precio = '';
+
+
+        }
+
+        $('#grabar').click(function() {
+
+//            ['numero', 'fecha', 'client_id', 'user_id', 'payment_id', 'cupon', 'total'];  inoice table fields
+//            ['invoice_id', 'cantidad', 'article_id', 'precio', 'total_line'];             Invoice_detail filds
+                if (detail.length > 0 && client_id > 0) {
+
+                    $.post(baseUrl('self/store'), {
+                        client_id: self.client_id,
+                        total: self.total,
+                        payment: self.payment_id,
+                        cupon: self.cupon,
+                        detail: self.detail
+                    }, function (r) {
+                        if (r.response) {
+                            window.location.href = baseUrl('invoice.index');
+                        } else {
+                            alert('Ocurrio un error');
+                        }
+                    }, 'json')
+                }
+                else {
+
+                }
+            }
+        )
+        function deleteDetailRow() {
+            alert('borra la fila');
+        }
+
+    </script>
+
+        {{--Autocomplete scripst--}}
+        <script>
+
         $(document).ready(function () {
 
-            $("#user").easyAutocomplete({
-                url: "/invoices/users",
-                getValue: "name",
+            $("#client").easyAutocomplete({
+                url: "/invoices/clients",
+                getValue: "nombre",
 
                 template: {
                     type: "description",
                     fields: {
-                        description: "username"
+                        description: "direccion"
                     }
                 },
                 list: {
                     match: {
                         enabled: true
                     }
-//                    ,
-//                    onSelectItemEvent: function() {
-//                        var user = $("#user").getSelectedItemData();
-//                        $('#user_id').val(user.id);
-//                    },
+                    ,
+                    onSelectItemEvent: function() {
+                        var client = $("#client").getSelectedItemData();
+                        $('#client_id').val(client.id);
+                        $('#direccion').val(client.direccion);
+                        $('#email').val(client.email);
+                    },
 //                    onClickEvent: function () {
 //                        var user = $("#user").getSelectedItemData();
 //                        window.location.href = '/users/' + user.id;
@@ -188,13 +263,13 @@
                 },
 
                 preparePostData: function(data) {
-                    data.term = $("#user").val();
+                    data.term = $("#client").val();
                     return data;
                 },
 
                 requestDelay: 400
             }).change(function () {
-                $('#user_id').val('');
+                $('#client_id').val('');
 
             });
 
@@ -210,22 +285,31 @@
                 template: {
                     type: "description",
                     fields: {
-                        description: "descripcion"
+                        description: "descripcion",
+
                     }
                 },
                 list: {
                     match: {
                         enabled: true
                     }
-//                    ,
+                    ,
 //                    onSelectItemEvent: function() {
 //                        var article = $("#article").getSelectedItemData();
 //                        $('#article_id').val(article.id);
 //                    },
-//                    onClickEvent: function () {
-//                        var article = $("#article").getSelectedItemData();
-//                        window.location.href = '/users/' + user.id;
-//                    }
+                    onClickEvent: function () {
+                        var article = $("#article").getSelectedItemData();
+
+                        $('#precio_unnitario').val(article.precio_unnitario);
+
+                        self.article_id = article.id;
+                        self.precio = article.precio_unitario;
+
+                        $('#precio').val(article.precio_unitario);
+
+
+                    }
                 },
 
                 theme: "bootstrap",
