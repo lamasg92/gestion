@@ -31,12 +31,15 @@
 
                     <div class="well well-sm">
                         <div class="row">
-                            <div class="col-xs-6">
-                                <input id="user" class="form-control typeahead" type="text" placeholder="user" />
+                            <div class="col-xs-4">
+                                <input id="client" class="form-control typeahead" type="text" placeholder="client" />
                             </div>
 
-                            <div class="col-xs-4">
-                                <input class="form-control" type="text" placeholder="Dirección" readonly value="{username}" />
+                            <div class="col-xs-6">
+                                <input class="form-control" type="text" placeholder="Dirección" readonly value="direccion" />
+                            </div>
+                            <div class="col-xs-2">
+                                <input class="form-control" type="text" placeholder="Email" readonly value="email" />
                             </div>
                         </div>
                     </div>
@@ -50,7 +53,7 @@
                     </div>
                     <div class="col-xs-2">
                         <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Precio" value="{precio}" readonly />
+                            <input class="form-control" type="text" placeholder="Precio" value="precio" readonly />
                         </div>
                     </div>
                     <div class="col-xs-1">
