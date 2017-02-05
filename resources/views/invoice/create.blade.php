@@ -29,19 +29,26 @@
                 <div class="col-md-4">
 
                     {!! Form::open([ 'class'=>'form']) !!}
-                        {!! Field::text('article',  ['class'=>'easy-autocomplete']) !!}
+                        {!! Field::text('user',  ['class'=>'easy-autocomplete']) !!}
+                        {!! Field::hidden('user_id', null, ['id' => 'user_id']) !!}
                     {!! Form::close() !!}
 
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-8">
+                    {!! Field::Text('username', null, ['id' => 'username']) !!}
                 </div>
-                <div class="col-md-2">
-                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-4">
-
                     {!! Form::open([ 'class'=>'form']) !!}
-                    {!! Field::text('user',  ['class'=>'easy-autocomplete']) !!}
-                    {!! Field::hidden('user_id', null, ['id' => 'user_id']) !!}
+                    {!! Field::text('article',  ['class'=>'easy-autocomplete']) !!}
+                    {!! Field::hidden('article_id', null, ['id' => 'article_id']) !!}
+
+                    <a href="{{route('invoices.create')}}" class="btn btn-info">
+                        <i class="glyphicon glyphicon-new-window"></i>
+                        Nueva
+                    </a>
+
                     {!! Form::close() !!}
 
                 </div>
@@ -73,12 +80,10 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-8">
-                                    <span class="label label-default">Importe Total </span>
+
                                 </div>
                                 <div class="col-md-4">
-                                      <p>
-                                        Aca va el importe total de la factura
-                                    </p>
+                                    {!! Field::text('Total') !!}
 
                                 </div>
                             </div>
@@ -88,22 +93,20 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <span class="label label-default">Medio de Pago</span>
+                    <div class="form-group">
+                        {!! Form::label('payment_id', 'Medio de pago') !!}
+                        {!! Form::select('payment_id', $payments, null, ['class' => 'form-control', 'placeholder' => 'Seleccione una opcion', 'required'])!!}
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="btn-group">
 
-                        <div class="form-group">
-                            {!! Form::label('payment_id', 'Medio de pago') !!}
-                            {!! Form::select('payment_id', $payments, null, ['class' => 'form-control', 'placeholder' => 'Seleccione una opcion', 'required'])!!}
-                        </div>
+                        {!! Field::text('Cupon  ') !!}
 
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <p>
-                        cupon de la tarjeta
-                    </p>
+
                 </div>
             </div>
             <div class="row">
@@ -140,7 +143,8 @@
 
     <script>
         $(document).ready(function () {
-            var user_options = {
+
+            $("#user").easyAutocomplete({
                 url: "/invoices/users",
                 getValue: "name",
 
@@ -153,15 +157,16 @@
                 list: {
                     match: {
                         enabled: true
-                    },
-                    onSelectItemEvent: function() {
-                        var user = $("#user").getSelectedItemData();
-                        $('#user_id').val(user.id);
-                    },
-                    onClickEvent: function () {
-                        var user = $("#user").getSelectedItemData();
-                        window.location.href = '/users/' + user.id;
                     }
+//                    ,
+//                    onSelectItemEvent: function() {
+//                        var user = $("#user").getSelectedItemData();
+//                        $('#user_id').val(user.id);
+//                    },
+//                    onClickEvent: function () {
+//                        var user = $("#user").getSelectedItemData();
+//                        window.location.href = '/users/' + user.id;
+//                    }
                 },
                 theme: "bootstrap",
 
@@ -178,15 +183,17 @@
                 },
 
                 requestDelay: 400
-            };
+            }).change(function () {
+                $('#user_id').val('');
 
-            $("#user").easyAutocomplete(user_options);
-
+            });
+          
         });
     </script>
     <script>
         $(document).ready(function () {
-            var article_options = {
+
+            $("#article").easyAutocomplete({
                 url: "/invoices/articles",
                 getValue: "nombre",
 
@@ -200,6 +207,15 @@
                     match: {
                         enabled: true
                     }
+//                    ,
+//                    onSelectItemEvent: function() {
+//                        var article = $("#article").getSelectedItemData();
+//                        $('#article_id').val(article.id);
+//                    },
+//                    onClickEvent: function () {
+//                        var article = $("#article").getSelectedItemData();
+//                        window.location.href = '/users/' + user.id;
+//                    }
                 },
 
                 theme: "bootstrap",
@@ -217,10 +233,9 @@
                 },
 
                 requestDelay: 400
-            };
-
-            $("#article").easyAutocomplete(article_options);
-
+            }).change(function () {
+                $('#article_id').val('');
+            });
         });
     </script>
 
