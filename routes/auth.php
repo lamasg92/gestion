@@ -6,6 +6,7 @@
  * Time: 11:31 PM
  */
 use App\Entities\Article;
+use App\Entities\Client;
 use App\Entities\User;
 
 
@@ -50,3 +51,9 @@ Route::get('invoices/articles', function (){
     return Article::findByNameorDescription($term);
 });
 
+Route::get('invoices/clients', function (){
+
+    $term = Request::get('term');
+
+    return Client::findByNombreoEmail($term);
+});

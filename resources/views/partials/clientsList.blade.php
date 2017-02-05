@@ -7,11 +7,11 @@
         <td>{{$client->email }}</td>
         <td >
 
-            {!! Form::open(['method' => 'GET', 'route' => ['clients.edit', $article]]) !!}
+            {!! Form::open(['method' => 'GET', 'route' => ['clients.edit', $client]]) !!}
                 <button type="submit" class="btn "> <i class="glyphicon glyphicon-edit"></i></button>
             {!! Form::close() !!}
 
-            {!! Form::open(['method' => 'DELETE', 'route' => ['clients.destroy', $article]]) !!}
+            {!! Form::open(['method' => 'DELETE', 'route' => ['clients.destroy', $client]]) !!}
             <button type="submit" class="btn"> <i class="glyphicon glyphicon-trash"></i></button>
             {!! Form::close() !!}
 
