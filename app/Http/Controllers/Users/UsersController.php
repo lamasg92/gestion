@@ -6,6 +6,7 @@ use App\Entities\Role;
 use App\Entities\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Crypt;
 
 class UsersController extends Controller
 {
@@ -39,17 +40,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $user = new User([
-            'name' => $request['name'],
-            'username' => $request['username'],
-            'email' => $request['email'],
-            'role_id' => $request['role_id'],
-            'password' => bcrypt($request['password']),
-        ]);
+        $user = User::findOrFail($id);
 
-        $user->update();
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->role_id = $request->role_id;
+
+        $user->save();
 
         flash('Usuario Actualizado exitosamente!!', 'success');
         return redirect()->route('users.index');
