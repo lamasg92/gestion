@@ -7,6 +7,7 @@
  */
 use App\Entities\Article;
 use App\Entities\Client;
+use App\Entities\Payment;
 use App\Entities\User;
 
 
@@ -56,4 +57,11 @@ Route::get('invoices/clients', function (){
     $term = Request::get('term');
 
     return Client::findByNombreoEmail($term);
+});
+
+Route::get('invoices/payments', function (){
+
+    $term = Request::get('term');
+
+    return Payment::findByNmae($term);
 });
