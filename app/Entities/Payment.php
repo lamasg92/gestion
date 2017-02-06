@@ -11,4 +11,14 @@ class Payment extends Model
     public function invoices(){
         return $this->hasMany(Invoice::class);
     }
+
+    public static function findByNmae($term){
+        return static::select('id', 'nombre')
+            ->where('nombre', 'LIKE', "%$term%")
+            ->get();
+    }
+
+
+
 }
+
