@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="<?php echo csrf_token() ?>"/>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -62,6 +63,12 @@
 <script src="{{asset('bower_components/riot/riot+compiler.min.js')}}"></script>
 
 @yield('scripts')
+
+<script>
+    function baseUrl(url) {
+        return '{{url('')}}/' + url;
+    }
+</script>
 
 <script>$('div.alert').not('.alert-important').delay(3000).fadeOut(350);</script>
 
