@@ -160,11 +160,17 @@
         //funtions for detail table
         function agregarProducto()
         {
+            console.log(self.id);
+            console.log(self.article.value);
+            console.log(self.cantidad.value);
+
+
+
             self.detail.push({
                 id: self.article_id,
-                name: self.article.value,
-                quantity: parseInt(self.cantidad.value),
-                price: parseFloat(self.precio),
+                nombre: self.article.value,
+                cantidad: parseInt(self.cantidad.value),
+                precio: parseFloat(self.article.precio),
                 total: parseFloat(self.precio * self.cantidad.value)
             });
 
