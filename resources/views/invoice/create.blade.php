@@ -152,26 +152,20 @@
 
         //self data
         var self = this;
-        self.client_id = 0;
-        self.detail = [];
-        self.total = 0;
+        var client_id = 0;
+         var detail = [];
+        var total = 0;
 
 
         //funtions for detail table
         function agregarProducto()
         {
-            console.log(self.id);
-            console.log(self.article.value);
-            console.log(self.cantidad.value);
-
-
-
-            self.detail.push({
-                id: self.article_id,
-                nombre: self.article.value,
-                cantidad: parseInt(self.cantidad.value),
-                precio: parseFloat(self.article.precio),
-                total: parseFloat(self.precio * self.cantidad.value)
+            detail.push({
+                id: article_id,
+                nombre: descripcion.value,
+                cantidad: parseInt(cantidad.value),
+                precio: parseFloat(precio.value),
+                total: parseFloat(precio.value * cantidad.value)
             });
 
             cleanInfo();
@@ -309,12 +303,11 @@
 
                         $('#precio_unnitario').val(article.precio_unnitario);
 
-                        self.article_id = article.id;
-                        self.precio = article.precio_unitario;
+                        article_id = article.id;
+                        precio = article.precio_unitario;
+                        descripcion = article.descripcion;
 
                         $('#precio').val(article.precio_unitario);
-
-
                     }
                 },
 
