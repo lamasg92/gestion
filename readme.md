@@ -15,14 +15,15 @@ El sistema presenta la funcionalidad de acceso por logueo y Registro de nuevo Us
 - [Instalacion](#Instalacion)
 - [Documentation](#Documentation)
 	- [Menus del Administrador](#MenusADM)
-	        
-		- [Users](#Users)
+		- [Usuarios](#Users)
+		    - [Roles](#Roles)
+		    - [Usuarios](#Users)
+		- [Articulos](#Categorias)
 		- [Categorias](#Categorias)
-	    - [Roles](#Roles)
+        - [Reportes](#MenusUSR)	    
     - [Menus del Usuario](#MenusUSR)	    
 		- [Facturas](#Facturas)
 		- [Clientes](#Clientes)
-    - [Reportes](#MenusUSR)		
 - [Tools](#Tools)
 - [Help & Questions](#Help)
 
@@ -60,13 +61,60 @@ Listen 8081
 LoadModule rewrite_module modules/mod_rewrite.so
 ```
 
-And repeat
+modificar el httpd-vhosts.conf en C:\xampp\apache\conf\extra
 
 ```
-until finished
+	<VirtualHost *:8081>
+			       DocumentRoot "C:/xampp/htdocs/"
+			       ServerName localhost
+			</VirtualHost>
+			<VirtualHost *:8081>
+			       DocumentRoot "C:/xampp/htdocs/gestion/public"
+			       ServerName gestion.app
+			       <Directory "C:/xampp/htdocs/gestion/public">
+				       AllowOverride All
+				       Require all Granted
+				 	</Directory>      
+			</VirtualHost>
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+en windows agregar en C:\Windows\System32\drivers\etc en el hots
+```
+127.0.0.1      		gestion.app
+```
+para la url sea gestion.app:8081 en el browser
+
+
+En la raiz del codigo se puede encontrar un arch env.example, renombralo a .env y editar todos los parametros para la aplicacion)
+
+```
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=DB_name
+DB_USERNAME=user
+DB_PASSWORD=secret
+```
+
+desde el raiz del proyecto abri una ventana de comandos o bash y ejecuta
+
+```
+composer update 
+```
+esto descarga y actualiza todos los paquetes del proyecto luego
+
+```
+php artisan  key:generate 
+```
+agrega una clave en el arch env
+
+una vez creada la bd en mysql ejecutar las migraciones para la creacion de tablas y carga de datos
+ 
+ ```
+ php artisan migrate  --seed
+```
+
+esto te genera las tablas y relaciones en la bd ademas carga con algunos datos 
+
 
 <a name="Documentacion"></a>
 ## Documentacion
