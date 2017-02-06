@@ -5,28 +5,28 @@
                 <input id="client" class="form-control typeahead" type="text" placeholder="Cliente" />
             </div>
             <div class="col-xs-5">
-                <input class="form-control" type="text" placeholder="Direccion" readonly value="{direccion}" />
+                <input class="form-control" type="text" placeholder="Direccion" readonly value="{address}" />
             </div>
             <div class="col-xs-3">
-                <input class="form-control" type="text" placeholder="Email" readonly value="{email}" />
+                <input class="form-control" type="text" placeholder="Email" readonly value="{mail}" />
             </div>
         </div>
     </div>
-
+    <hr />
     <div class="row">
         <div class="col-xs-7">
-            <input id="article" class="form-control" type="text" placeholder="Nombre del articulo" />
+            <input id="product" class="form-control" type="text" placeholder="Nombre del articulo" />
         </div>
         <div class="col-xs-2">
-            <input id="cantidad" class="form-control" type="text" placeholder="Cantidad" />
+            <input id="quantity" class="form-control" type="text" placeholder="Cantidad" />
         </div>
         <div class="col-xs-2">
             <div class="input-group">
-                <input class="form-control" type="text" placeholder="Precio" value="{precio }" readonly />
+                <input class="form-control" type="text" placeholder="Precio" value="{price}" readonly />
             </div>
         </div>
         <div class="col-xs-1">
-            <button onclick={__addProductoToDetail} class="btn btn-primary form-control" id="btn-agregar">
+            <button onclick={__addRow} class="btn btn-primary form-control" id="btn-agregar">
                 <i class="glyphicon glyphicon-plus"></i>
             </button>
         </div>
@@ -38,7 +38,7 @@
         <thead>
         <tr>
             <th style="width:40px;"></th>
-            <th>Producto</th>
+            <th>Articulo</th>
             <th style="width:100px;">Cantidad</th>
             <th style="width:100px;">P.U</th>
             <th style="width:100px;">Total</th>
@@ -47,9 +47,9 @@
         <tbody>
         <tr each={detail}>
             <td>
-                <button onclick={__removeProductFromDetail} class="btn btn-danger btn-xs btn-block">X</button>
+                <button onclick={__removeDetail} class="btn btn-danger btn-xs btn-block">X</button>
             </td>
-            <td>{name}</td>
+            <td>{nombre}</td>
             <td class="text-right">{quantity}</td>
             <td class="text-right">$ {price}</td>
             <td class="text-right">$ {total}</td>
@@ -63,95 +63,140 @@
         </tfoot>
     </table>
 
-    <button if={detail.length > 0 && client_id > 0} onclick={__save} class="btn btn-default btn-lg btn-block">
+    <div class="row">
+        <div class="col-xs-4">
+            <input id="payment" class="form-control" type="text" placeholder="Forma de pago" />
+        </div>
+        <div class="col-xs-6">
+            <input if={payment_nombre == "tarjeta"} id="cupon" class="form-control" type="text" placeholder="cupon" />
+        </div>
+    </div>
+    <hr />
+
+    <button if={detail.length > 0 && client_id > 0} onclick={__grabar} class="btn btn-default btn-lg btn-block">
         Guardar
     </button>
 
     <script>
+        //references to all controls
         var self = this;
-
+        var article_id;
+        var payment_nombre= "";
         // Detalle del comprobante
         self.client_id = 0;
+        self.payment_id = 0;
         self.detail = [];
         self.total = 0;
+        article_id = '';
 
+        //set autocomplete functionality
         self.on('mount', function(){
-            clientAutocomplete();
-            articleAutocomplete();
+            __clientAutocomplete();
+            __articleAutocomplete();
+            __paymentAutocomplete();
         })
 
-        __removeProductFromDetail(e) {
-            var item = e.item,
-                index = this.detail.indexOf(item);
+        __addRow()
+        {
+            var quantity = parseFloat($("#quantity").val());
 
-            this.detail.splice(index, 1);
-            __calculate();
+            if((article_id > 0) && (quantity >0 ))
+            {
+                    self.detail.push({
+                        id: article_id,
+                        nombre: $("#product").val(),
+                        quantity: parseFloat($("#quantity").val()),
+                        price: self.price,
+                        total: self.price * parseFloat($("#quantity").val())
+                    });
+
+                    $("#product").val('');
+                    $("#quantity").val('')
+                    self.price = '';
+                    __calcular();
+           }
         }
 
-        __addProductoToDetail() {
-            self.detail.push({
-                id: self.product_id,
-                name: self.product.value,
-                quantity: parseFloat(self.quantity.value),
-                price: parseFloat(self.price),
-                total: parseFloat(self.price * self.quantity.value)
-            });
-
-            self.product_id = 0;
-            self.product.value = '';
-            self.quantity.value = '';
-            self.price = '';
-
-            __calculate();
-        }
-
-        __save() {
-            $.post(baseUrl('invoice/save'), {
+        __grabar()
+        {
+//              ['numero', 'fecha', 'client_id', 'user_id', 'payment_id', 'cupon', 'total'];
+//              ['invoice_id', 'cantidad', 'article_id', 'precio', 'total_line'];
+            $.post(baseUrl('invoice/store'), {
                 client_id: self.client_id,
+                payment_id: self.payment_id,
                 total: self.total,
                 detail: self.detail
             }, function(r){
                 if(r.response) {
-                    window.location.href = baseUrl('invoice');
+                    window.location.href = baseUrl('invoice/index');
                 } else {
                     alert('Ocurrio un error');
                 }
             }, 'json')
         }
 
-        function __calculate() {
+        function __calcular()
+        {
             var total = 0;
-
             self.detail.forEach(function(e){
                 total += e.total;
             });
-
             self.total = total;
         }
 
-        function clientAutocomplete(){
-            var client = $("#client"),
-                options = {
-                    url: "/invoices/clients",
-                getValue: 'name',
-                list: {
-                    onClickEvent: function() {
-                        var client = client.getSelectedItemData();
-                        self.client_id = client.id;
-                        self.ruc = client.direccion;
-                        self.address = client.email;
+        __removeDetail(e)
+        {
+            var item = e.item,
+                index = this.detail.indexOf(item);
 
-                        self.update();
-                    }
-                }
-            };
-
-            client.easyAutocomplete(options);
+            this.detail.splice(index, 1);
+            __calcular();
         }
 
-        function articleAutocomplete(){
-            var articulo = $("#article"),
-                options = {
+        function __clientAutocomplete()
+        {
+            var client = $("#client"),
+                client_options = {
+                    url: "/invoices/clients",
+                    getValue: "nombre",
+                    template: {
+                        type: "description",
+                        fields: {
+                            description: "descripcion",
+                        }
+                    },
+                    list: {
+                        match: {
+                            enabled: true
+                        },
+                    onClickEvent: function() {
+                        var e =  $("#client").getSelectedItemData();
+                        self.client_id = e.id;
+                        self.address = e.direccion;
+                        self.mail = e.email;
+                        self.update();
+                    }
+                },
+                    theme: "bootstrap",
+                    ajaxSettings: {
+                        dataType: "json",
+                        method: "GET",
+                        data: {
+                        }
+                    },
+                    preparePostData: function(data) {
+                        data.term = $("#client").val();
+                        return data;
+                    },
+                    requestDelay: 400
+            };
+            client.easyAutocomplete(client_options);
+        }
+
+        function __articleAutocomplete()
+        {
+            var article = $("#product"),
+                article_options = {
                     url: "/invoices/articles",
                     getValue: "nombre",
                     template: {
@@ -163,15 +208,13 @@
                     list: {
                         match: {
                             enabled: true
+                        },
+                        onClickEvent: function() {
+                            var e = article.getSelectedItemData();
+                            article_id = e.id;
+                            self.price = e.precio_unitario;
+                            self.update();
                         }
-                        ,
-                    onClickEvent: function() {
-                        var art = articulo.getSelectedItemData();
-                        self.product_id = art.id;
-                        self.precio = art.precio_unitario;
-
-                        self.update();
-                    }
                     },
                     theme: "bootstrap",
                     ajaxSettings: {
@@ -181,13 +224,48 @@
                         }
                     },
                     preparePostData: function(data) {
-                        data.term = $("#article").val();
+                        data.term = $("#product").val();
                         return data;
                     },
                     requestDelay: 400
             };
-
-            articulo.easyAutocomplete(options);
+            article.easyAutocomplete(article_options);
         }
+
+        function __paymentAutocomplete()
+        {
+            var pago = $("#payment"),
+                payment_options = {
+                    url: "/invoices/payments",
+                    getValue: "nombre",
+
+                    list: {
+                        match: {
+                            enabled: true
+                        },
+                        onClickEvent: function() {
+                            var e = pago.getSelectedItemData();
+                            self.payment_id = e.id;
+                            self.payment_nombre = e.nombre;
+
+                            self.update();
+                        }
+                    },
+                    theme: "bootstrap",
+                    ajaxSettings: {
+                        dataType: "json",
+                        method: "GET",
+                        data: {
+                        }
+                    },
+                    preparePostData: function(data) {
+                        data.term = $("#payment").val();
+                        return data;
+                    },
+                    requestDelay: 400
+                };
+            pago.easyAutocomplete(payment_options);
+        }
+
     </script>
 </invoice>
