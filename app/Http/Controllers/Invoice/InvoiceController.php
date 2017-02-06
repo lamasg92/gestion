@@ -28,12 +28,23 @@ class InvoiceController extends Controller
 
     public function store(Request $request)
     {
-        //save invoice
+        //['numero', 'fecha', 'client_id', 'user_id', 'payment_id', 'cupon', 'total'];
+      //  ['invoice_id', 'cantidad', 'article_id', 'precio', 'total_line'];
 
-        //saves detalil
-
-
-        //back??
+        $data = (object)[
+            'total' => $request->input('total'),
+            'client_id' => $request->input('client_id'),
+            'payment_id' => $request->input('payment_id'),
+            'detail' => []
+        ];
+        foreach($request->input('detail') as $d){
+            $data->detail[] = (object)[
+                'product_id' => $d['id'],
+                'cantidad'   => $d['quantity'],
+                'precio_unitario'  => $d['price'],
+                'total'      => $d['total']
+            ];
+        }
 
     }
 
