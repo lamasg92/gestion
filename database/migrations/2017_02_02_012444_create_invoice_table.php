@@ -15,9 +15,6 @@ class CreateInvoiceTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('numero')->nullable(false);
-
-            $table->date('fecha')->nullable(false);
 
             $table->integer('client_id')->unsigned();
             $table->foreign('client_id')->references('id')->on('clients');

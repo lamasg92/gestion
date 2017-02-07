@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
-    protected $fillable = ['numero', 'fecha', 'client_id', 'user_id', 'payment_id', 'cupon', 'total'];
+    protected $fillable = [ 'client_id', 'user_id', 'payment_id', 'cupon', 'total'];
 
 
     public function scopeName($query, $number){
