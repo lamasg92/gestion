@@ -41,9 +41,9 @@ class InvoiceController extends Controller
 
 
     //shows detail of invoice row
-    public function detail($id)
+    public function show($id)
     {
-        return view('invoice.detail', [
+      return view('invoice.show', [
             'model' => $this->_invoiceRepo->get($id)
         ]);
     }
@@ -57,21 +57,11 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
 
-//        client_id:3
-//payment_id:2
-//total:135894.2
-//cupon:123355sss
-//detail[0][id]:1
-
-        //'client_id', 'user_id', 'payment_id', 'cupon', 'total
-
-        $userId = Auth::user()->id;
-
         $data = (object)[
-            'iva' => $request->input('iva'),
-            'subTotal' => $request->input('subTotal'),
-            'total' => $request->input('total'),
             'client_id' => $request->input('client_id'),
+            'payment_id' => $request->input('payment_id'),
+            'total' => $request->input('total'),
+            'cupon' => $request->input('cupon'),
             'detail' => []
         ];
         foreach($request->input('detail') as $d){
@@ -88,13 +78,7 @@ class InvoiceController extends Controller
 
     public function topdf($id)
     {
-//        $model = $this->_invoiceRepo->get($id);
-//        $invoice_name = sprintf('comprobante-%s.pdf', str_pad ($model->id, 7, '0', STR_PAD_LEFT));
-//        $pdf = PDF::loadView('invoice.pdf', [
-//            'model' => $model
-//        ]);
-//        return $pdf->download($invoice_name);
-        return 'gola pdf';
+        return 'print pdf';
     }
 
 

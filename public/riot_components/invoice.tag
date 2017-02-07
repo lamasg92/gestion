@@ -26,7 +26,9 @@
             </div>
         </div>
         <div class="col-xs-1">
-            <button onclick={__addRow} class="btn btn-primary form-control" id="btn-agregar">
+            <button onclick={__addRow} class="btn
+                                              btn-primary
+                                              form-control" id="btn-agregar">
                 <i class="glyphicon glyphicon-plus"></i>
             </button>
         </div>
@@ -47,7 +49,10 @@
         <tbody>
         <tr each={detail}>
             <td>
-                <button onclick={__removeDetail} class="btn btn-danger btn-xs btn-block">X</button>
+                <button onclick={__removeDetail} class="btn
+                                                        btn-danger
+                                                        btn-xs
+                                                        btn-block">X</button>
             </td>
             <td>{nombre}</td>
             <td class="text-right">{quantity}</td>
@@ -73,7 +78,9 @@
     </div>
     <hr />
 
-    <button if={detail.length > 0 && client_id > 0} onclick={__grabar} class="btn btn-default btn-lg btn-block">
+    <button if={detail.length > 0 && client_id > 0}
+            onclick={__saveData}
+            class="btn btn-default btn-lg btn-block">
         Guardar
     </button>
 
@@ -82,7 +89,7 @@
         var self = this;
         var article_id;
         var payment_nombre= "";
-        // Detalle del comprobante
+        // Detail
         self.client_id = 0;
         self.payment_id = 0;
         self.detail = [];
@@ -90,6 +97,7 @@
         article_id = '';
 
         //set autocomplete functionality
+        //first thing to load
         self.on('mount', function(){
             __clientAutocomplete();
             __articleAutocomplete();
@@ -113,14 +121,12 @@
                     $("#product").val('');
                     $("#quantity").val('')
                     self.price = '';
-                    __calcular();
+                __totals();
            }
         }
 
-        __grabar()
+        __saveData()
         {
-//              ['numero', 'fecha', 'client_id', 'user_id', 'payment_id', 'cupon', 'total'];
-//              ['invoice_id', 'cantidad', 'article_id', 'precio', 'total_line'];
             $.post(baseUrl('invoices/store'), {
                 client_id: self.client_id,
                 payment_id: self.payment_id,
@@ -136,7 +142,7 @@
             }, 'json')
         }
 
-        function __calcular()
+        function __totals()
         {
             var total = 0;
             self.detail.forEach(function(e){
@@ -151,7 +157,7 @@
                 index = this.detail.indexOf(item);
 
             this.detail.splice(index, 1);
-            __calcular();
+            __totals();
         }
 
         function __clientAutocomplete()

@@ -14,6 +14,7 @@
             <thead>
                 <th>Cliente</th>
                 <th>Fecha</th>
+                <th>Forma Pago</th>
                 <th>Total</th>
                 <th>Accion</th>
             </thead>
@@ -21,8 +22,6 @@
                  @include('partials.invoiceList');
             </tbody>
         </table>
-        {{--Allow pagination--}}
-
     </div>
 @endsection
 

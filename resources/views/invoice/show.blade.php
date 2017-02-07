@@ -1,17 +1,17 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h2 class="page-header">
-                    Comprobante # {{ str_pad ($model->id, 7, '0', STR_PAD_LEFT) }}
+                    Comprobante  {{ str_pad ($model->id, 7, '0', STR_PAD_LEFT) }}
                 </h2>
 
                 <div class="well well-sm">
                     <div class="row">
                         <div class="col-xs-6">
-                            <input class="form-control typeahead" type="text" readonly value="{{ $model->client->name }}" />
+                            <input class="form-control typeahead" type="text" readonly value="{{ $model->client->nombre }}" />
                         </div>
                         <div class="col-xs-2">
                             <input class="form-control" type="text" readonly value={{ $model->client->direccion }} />
@@ -27,21 +27,21 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Producto</th>
+                        <th>Articulo</th>
                         <th style="width:100px;">Cantidad</th>
                         <th style="width:100px;">P.U</th>
                         <th style="width:100px;">Total</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($model->detail as $d)
-                        <tr>
-                            <td>{{$d->product->name}}</td>
-                            <td class="text-right">{{$d->quantity}}</td>
-                            <td class="text-right">$ {{number_format($d->unitPrice, 2)}}</td>
-                            <td class="text-right">$ {{number_format($d->total, 2)}}</td>
-                        </tr>
-                    @endforeach
+                        @foreach($model->invoice_details as $d)
+                            <tr>
+                                <td>{{$d->article->nombre}}</td>
+                                <td class="text-right">{{$d->cantidad}}</td>
+                                <td class="text-right">$ {{number_format($d->precio_unitario, 2)}}</td>
+                                <td class="text-right">$ {{number_format($d->total_line, 2)}}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                     <tfoot>
                     <tr>

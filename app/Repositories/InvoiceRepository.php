@@ -12,6 +12,7 @@ namespace app\Repositories;
 use App\Entities\Invoice;
 use App\Entities\Invoice_Detail;
 use DB;
+use Exception;
 
 class InvoiceRepository
 {
@@ -20,36 +21,66 @@ class InvoiceRepository
     public function __construct(){
         $this->model = new Invoice();
     }
+
+    /**
+     * find an invoice givin the id
+     * @param $id
+     * @return mixed
+     */
     public function get($id) {
         return $this->model->find($id);
     }
+
+    /**
+     * find all invoices
+     * @return mixed
+     */
     public function getAll() {
         return $this->model->orderBy('id', 'desc')->get();
     }
+
+    /**
+     * saves the data to DB
+     * @param $data
+     * @return string
+     */
     public function save($data) {
         $return = (object)[
             'response' => false
         ];
+
+        var_dump($data);
         try {
             DB::beginTransaction();
-            $this->model->total = $data->total;
-            $this->model->client_id = $data->client_id;
-            $this->model->save();
-            $detail = [];
-            foreach($data->detail as $d) {
-                $obj = new Invoice_Detail();
-                $obj->article_id = $d->article_id;
-                $obj->cantidad = $d->quantity;
-                $obj->precio = $d->price;
-                $obj->total_line = $d->total;
-                $detail[] = $obj;
-            }
-            $this->model->detail()->saveMany($detail);
-            $return->response = true;
+
+                $this->model->client_id = $data->client_id;
+                $this->model->payment_id = $data->payment_id;
+                $this->model->cupon = $data->cupon;
+                $this->model->total = $data->total;
+
+                $this->model->save();
+
+                $detail = [];
+
+                foreach($data->detail as $d) {
+                    $obj = new Invoice_Detail();
+                    $obj->cantidad = $d->cantidad;
+                    $obj->article_id = $d->article_id;
+                    $obj->precio = $d->precio;
+                    $obj->total_line = $d->total_line;
+
+                    $detail[] = $obj;
+                }
+                $this->model->invoice_details()->saveMany($detail);
+
+                $return->response = true;
+
             DB::commit();
-        } catch (\Exception $e){
+
+        } catch (Exception $e){
             DB::rollBack();
         }
+
         return json_encode($return);
     }
 
