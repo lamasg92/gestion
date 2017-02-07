@@ -18,8 +18,8 @@ class ArticleTableSeeder extends Seeder
             'nombre'            => $faker->word,
             'descripcion'       => $faker->text,
             'category_id'       => $faker->numberBetween($min = 1, $max = 2),
-            'stock'             => $faker->numberBetween($min = 0, $max = 9000),
-            'precio_unitario'   => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = NULL),
+            'stock'             => $faker->numberBetween($min = 1, $max = 9000),
+            'precio_unitario'   => $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = NULL),
         ];
     }
 

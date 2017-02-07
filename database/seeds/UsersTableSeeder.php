@@ -41,14 +41,5 @@ class UsersTableSeeder extends Seeder
         ]);
         $user3->role_id = Role::where('nombre', 'user')->first()->id;
         $user3->save();
-
-        $user4 = new User([
-            'name' => 'uno',
-            'username' => 'uno',
-            'email' => 'uno@user.com',
-            'password' => bcrypt('uno'),
-        ]);
-        $user4->role_id = Role::where('nombre', 'user')->first()->id;
-        $user4->save();
     }
 }
