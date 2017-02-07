@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
-    protected $fillable = [ 'client_id', 'user_id', 'payment_id', 'cupon', 'total'];
+    protected $fillable = [ 'client_id', 'payment_id', 'cupon', 'total'];
 
 
     public function scopeName($query, $number){
@@ -23,10 +23,6 @@ class Invoice extends Model
 
     public function client(){
         return $this->belongsTo(Client::class);
-    }
-
-    public function user(){
-        return $this->belongsTo(User::class);
     }
 
     public function payment(){
