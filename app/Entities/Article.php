@@ -25,8 +25,9 @@ class Article extends Model
 
     public static function findByNameorDescription($term){
         return static::select('id', 'nombre', 'descripcion', 'category_id', 'precio_unitario')
-                        ->where('nombre', 'LIKE', "%$term%")
-                        ->orWhere('descripcion', 'LIKE', "%$term%")
-                        ->get();
+            ->where('nombre', 'LIKE', "%$term%")
+            ->orWhere('descripcion', 'LIKE', "%$term%")
+            ->get();
     }
+
 }

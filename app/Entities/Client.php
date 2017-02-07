@@ -18,11 +18,12 @@ class Client extends Model
             $query->where('nombre', 'LIKE', "%$name%");
         }
     }
-
     public static function findByNombreoEmail($term){
         return static::select('id', 'nombre', 'apellido', 'direccion', 'email')
             ->where('nombre', 'LIKE', "%$term%")
             ->orWhere('email', 'LIKE', "%$term%")
             ->get();
     }
+
+
 }
