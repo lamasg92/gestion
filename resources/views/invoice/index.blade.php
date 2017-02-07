@@ -12,9 +12,8 @@
 
         <table class="table table-striped">
             <thead>
-                <th>Fecha</th>
-                <th>Numero</th>
                 <th>Cliente</th>
+                <th>Fecha</th>
                 <th>Total</th>
                 <th>Accion</th>
             </thead>
@@ -23,7 +22,7 @@
             </tbody>
         </table>
         {{--Allow pagination--}}
-        {{$invoices->render()}}
+
     </div>
 @endsection
 
