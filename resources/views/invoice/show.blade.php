@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('content')
-    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h2 class="page-header">
@@ -28,18 +27,18 @@
                     <thead>
                     <tr>
                         <th>Articulo</th>
-                        <th style="width:100px;">Cantidad</th>
-                        <th style="width:100px;">P.U</th>
-                        <th style="width:100px;">Total</th>
+                        <th >Cantidad</th>
+                        <th >Precio</th>
+                        <th >Total</th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($model->invoice_details as $d)
                             <tr>
                                 <td>{{$d->article->nombre}}</td>
-                                <td class="text-right">{{$d->cantidad}}</td>
-                                <td class="text-right">$ {{number_format($d->precio_unitario, 2)}}</td>
-                                <td class="text-right">$ {{number_format($d->total_line, 2)}}</td>
+                                <td >{{$d->cantidad}}</td>
+                                <td >$ {{number_format($d->precio, 2)}}</td>
+                                <td >$ {{number_format($d->total_line, 2)}}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -53,5 +52,4 @@
 
             </div>
         </div>
-    </div>
 @endsection

@@ -1,15 +1,11 @@
 @foreach ($model as $m)
     <tr>
         <td>
-            <a href="{{url('invoices/show/' . $m->id )}}">
-                {{ $m->client->nombre }}
-            </a>
+            <a href="{{url('invoices/show/' . $m->id )}}">{{ $m->client->nombre }} </a>
         </td>
-        <td class="text-right">{{ $m->created_at  }}</td>
-
-        <td class="text-right">{{ $m->payment->nombre  }}</td>
-
-        <td class="text-right">$ {{number_format($m->total, 2)}}</td>
+        <td >{{ $m->created_at  }}</td>
+        <td >{{ $m->payment->nombre  }}</td>
+        <td >$ {{number_format($m->total, 2)}}</td>
 
         <td class="text-right">
             <a class="btn btn-success btn-block btn-xs" href="{{ url('invoices/topdf/' . $m->id) }}">
