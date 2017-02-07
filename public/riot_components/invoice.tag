@@ -68,7 +68,7 @@
             <input id="payment" class="form-control" type="text" placeholder="Forma de pago" />
         </div>
         <div class="col-xs-6">
-            <input if={payment_nombre == "tarjeta"} id="cupon" class="form-control" type="text" placeholder="cupon" />
+            <input if={payment_nombre == "tarjeta"} id="cupon" class="form-control" type="text" placeholder="Cupon" />
         </div>
     </div>
     <hr />
@@ -121,14 +121,15 @@
         {
 //              ['numero', 'fecha', 'client_id', 'user_id', 'payment_id', 'cupon', 'total'];
 //              ['invoice_id', 'cantidad', 'article_id', 'precio', 'total_line'];
-            $.post(baseUrl('invoice/store'), {
+            $.post(baseUrl('invoices/store'), {
                 client_id: self.client_id,
                 payment_id: self.payment_id,
                 total: self.total,
+                cupon: $("#cupon").val(),
                 detail: self.detail
             }, function(r){
                 if(r.response) {
-                    window.location.href = baseUrl('invoice/index');
+                    window.location.href = baseUrl('invoices/index');
                 } else {
                     alert('Ocurrio un error');
                 }

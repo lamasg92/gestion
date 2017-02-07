@@ -38,6 +38,15 @@ Route::post('invoices/store', [
 ]);
 
 
+Route::get('invoices/topdf', [
+    'uses' => 'Invoice\InvoiceController@topdf',
+    'as' => 'invoices.topdf',
+]);
+
+
+
+
+
 Route::get('invoices/users', function (){
 
     $term = Request::get('term');
