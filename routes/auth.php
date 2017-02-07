@@ -37,9 +37,15 @@ Route::post('invoices/store', [
     'as' => 'invoices.store',
 ]);
 
-Route::get('/invoices/show/{id}', 'Invoice\InvoiceController@show');
+Route::get('/invoices/show/{id}', [
+        'uses' =>   'Invoice\InvoiceController@show',
+        'as'=> 'invoices.show',
+]);
 
-Route::get('/invoices/topdf/{id}', 'Invoice\InvoiceController@topdf');
+Route::get('/invoices/topdf/{id}', [
+           'uses' =>   'Invoice\InvoiceController@topdf',
+           'as'=> 'invoices.pdf',
+]);
 
 
 

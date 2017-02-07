@@ -78,7 +78,12 @@ class InvoiceController extends Controller
 
     public function topdf($id)
     {
-        return 'print pdf';
+        $model = $this->_invoiceRepo->get($id);
+        $invoice_name = sprintf('comprobante-%s.pdf', str_pad ($model->id, 7, '0', STR_PAD_LEFT));
+        $pdf = PDF::loadView('invoice.pdf', [
+            'model' => $model
+        ]);
+        return $pdf->download($invoice_name);
     }
 
 
