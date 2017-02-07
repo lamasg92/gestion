@@ -13,6 +13,7 @@ use App\Entities\Invoice;
 use App\Entities\Invoice_Detail;
 use DB;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class InvoiceRepository
 {
@@ -57,6 +58,7 @@ class InvoiceRepository
                 $this->model->payment_id = $data->payment_id;
                 $this->model->cupon = $data->cupon;
                 $this->model->total = $data->total;
+                $this->model->user_id = Auth::id();;
 
                 $this->model->save();
 
