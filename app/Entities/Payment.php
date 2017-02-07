@@ -17,8 +17,5 @@ class Payment extends Model
             ->where('nombre', 'LIKE', "%$term%")
             ->get();
     }
-
-
-
 }
 
