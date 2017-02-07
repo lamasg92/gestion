@@ -61,8 +61,10 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{asset('bower_components/riot/riot.min.js')}}"></script>
 <script src="{{asset('bower_components/riot/riot+compiler.min.js')}}"></script>
+<script src="{{asset('ini.js')}}"></script>
 
 @yield('scripts')
+
 
 <script>
     function baseUrl(url) {
