@@ -78,3 +78,16 @@ Route::get('invoices/payments', function (){
 
     return Payment::findByNmae($term);
 });
+
+
+//reports routes
+Route::get('report/sales/byclient/index', [
+    'uses' => 'Report\ReportController@index',
+    'as' => 'report.sales.byclient.index',
+]);
+
+
+Route::post('report/sales/byclient/show', [
+    'uses' => 'Report\ReportController@show',
+    'as' => 'report.sales.byclient.show',
+]);

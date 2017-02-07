@@ -35,37 +35,14 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="#"
-                               {{--{{ route('reoport.sales.user') }}--}}
-                               onclick="event.preventDefault();
-                                                         document.getElementById('vta-diaria-form').submit();">
-                                Venta diaria
-                            </a>
-                            <form id="vta-diaria-form" action="{{ route('logout') }}" method="POST"
-                                  style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
+                            <a href="{{ route('report.sales.byclient.index') }}">Venta Diaria</a>
                         </li>
                         <li>
-                            <a href="#"
-                               {{--{{ route('reoport.sales.user') }}--}}
-                               onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                Venta por Cliente
-                            </a>
-
+                            <a href="#">Venta por Cliente</a>
                         </li>
                         <li>
-                            <a href="#"
-                               {{--{{ route('reoport.sales.user') }}--}}
-                               onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                Venta por Usuario
-                            </a>
-
+                            <a href="#">Venta por Usuario</a>
                         </li>
-
-
                     </ul>
                 </li>
             @endif
