@@ -5,73 +5,69 @@
 
 @section('content')
 
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Reporte Por cliente</div>
-                    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Reporte Por cliente</div>
+                <div class="panel-body">
 
-                        <div class="row">
+                    <div class="row">
 
-                            <div class="col-xs-6">
+                        <div class="col-xs-6">
 
-                                {!! Form::open(['class' => 'form']) !!}
-                                    {!! Field::text('Cliente', ['class' => 'easy-autocomplete', 'placeholder' => "Nombre"]) !!}
-                                    {!! Field::hidden('client_id', null, ['id' => 'client_id']) !!}
-                                    {!! Form::submit('Reporte', ['class' => 'btn btn-primary']) !!}
-                                {!! Form::close() !!}
-
-                                {{--<input id="client" class="form-control typeahead" type="text" placeholder="Cliente" />--}}
-                            </div>
-                            <div class="col-xs-4">
+                            {!! Form::open(['class' => 'form']) !!}
+                            {!! Field::text('client', ['class' => 'easy-autocomplete', 'placeholder' => "Nombre"]) !!}
+                            {!! Field::hidden('client_id', null, ['id' => 'client_id']) !!}
+                            {!! Form::submit('Reporte', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::close() !!}
 
                         </div>
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
 @endsection
 @section('scripts')
     {!! Html::script('js/jquery.easy-autocomplete.js') !!}
-<script>
-    $(document).ready(function () {
-        $("#client").easyAutocomplete({
-            url: "/invoices/clients",
-            getValue: "nombre",
-            template: {
-                type: "description",
-                fields: {
-                    description: "email",
-                }
-            },
-            list: {
-                match: {
-                    enabled: true
+    <script>
+        $(document).ready(function () {
+            $("#client").easyAutocomplete({
+                url: "/invoices/clients",
+                getValue: "nombre",
+                template: {
+                    type: "description",
+                    fields: {
+                        description: "email",
+                    }
                 },
-                onClickEvent: function() {
-                    var cliente =  $("#client").getSelectedItemData();
-                    $('#client_id').val(cliente.id);
+                list: {
+                    match: {
+                        enabled: true
+                    },
+                    onClickEvent: function () {
+                        var cliente = $("#client").getSelectedItemData();
+                        $('#client_id').val(cliente.id);
 
-                }
-            },
-            theme: "bootstrap",
-            ajaxSettings: {
-                dataType: "json",
-                method: "GET",
-                data: {
-                }
-            },
-            preparePostData: function(data) {
-                data.term = $("#client").val();
-                return data;
-            },
-            requestDelay: 400
+                    }
+                },
+                theme: "bootstrap",
+                ajaxSettings: {
+                    dataType: "json",
+                    method: "GET",
+                    data: {}
+                },
+                preparePostData: function (data) {
+                    data.term = $("#client").val();
+                    return data;
+                },
+                requestDelay: 400
 
-        }).change(function () {
-            $('#client_id').val('');
+            }).change(function () {
+                $('#client_id').val('');
+            });
         });
-    });
-</script>
+    </script>
 
 @endsection
