@@ -89,7 +89,12 @@ Route::get('report/sales/index/{filter}', [
 ]);
 
 
-Route::post('report/sales/byclient/index', [
+Route::post('report/sales/index/byclient', [
     'uses' => 'Report\ReportController@show',
     'as' => 'report.sales.byclient.index',
+]);
+
+Route::post('report/sales/index/byuser', [
+    'uses' => 'Report\ReportController@showUser',
+    'as' => 'report.sales.byuser.index',
 ]);
