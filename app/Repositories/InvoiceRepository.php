@@ -46,11 +46,11 @@ class InvoiceRepository
      * @return string
      */
     public function save($data) {
-        $return = (object)[
+        $respuesta = (object)[
             'response' => false
         ];
 
-        var_dump($data);
+
         try {
             DB::beginTransaction();
 
@@ -75,7 +75,7 @@ class InvoiceRepository
                 }
                 $this->model->invoice_details()->saveMany($detail);
 
-                $return->response = true;
+            $respuesta->response = true;
 
             DB::commit();
 
@@ -83,7 +83,7 @@ class InvoiceRepository
             DB::rollBack();
         }
 
-        return json_encode($return);
+        return json_encode($respuesta);
     }
 
 }
