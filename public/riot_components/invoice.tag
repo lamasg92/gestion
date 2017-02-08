@@ -169,7 +169,7 @@
                     template: {
                         type: "description",
                         fields: {
-                            description: "descripcion",
+                            description: "email",
                         }
                     },
                     list: {
