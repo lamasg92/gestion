@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Client;
 
 use App\Entities\Client;
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
+use PhpParser\Error;
 
 class ClientController extends Controller
 {
@@ -101,7 +103,12 @@ class ClientController extends Controller
     public function destroy($id)
     {
         $client = Client::find($id);
-        $client->delete();
+        try{
+            $client->delete();
+        }catch (Exception $e){
+            flash('El Cliente tiene facturas asociadas!!', 'warning');
+            return redirect()->back();
+        };
         flash('Cliente borrado exitosamente!!', 'success');
         return redirect()->back();
     }

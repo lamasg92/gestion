@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Category;
 
 use App\Entities\Category;
+use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -103,7 +104,15 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
-        $category->delete();
+
+
+
+        try{
+            $category->delete();
+        }catch (Exception $e){
+            flash('La categoria tiene Articulos  asociadas!!', 'warning');
+            return redirect()->back();
+        };
         flash('Categoria borrada exitosamente!!', 'success');
         return redirect()->back();
 
