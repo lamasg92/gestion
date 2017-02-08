@@ -16,7 +16,7 @@
                             <div class="col-xs-6">
 
                                 {!! Form::open(['class' => 'form']) !!}
-                                    {!! Field::text('client', ['class' => 'easy-autocomplete', 'placeholder' => "Cliente"]) !!}
+                                    {!! Field::text('Cliente', ['class' => 'easy-autocomplete', 'placeholder' => "Nombre"]) !!}
                                     {!! Field::hidden('client_id', null, ['id' => 'client_id']) !!}
                                     {!! Form::submit('Reporte', ['class' => 'btn btn-primary']) !!}
                                 {!! Form::close() !!}
@@ -42,7 +42,7 @@
             template: {
                 type: "description",
                 fields: {
-                    description: "descripcion",
+                    description: "email",
                 }
             },
             list: {
