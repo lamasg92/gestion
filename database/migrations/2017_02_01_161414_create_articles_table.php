@@ -18,7 +18,10 @@ class CreateArticlesTable extends Migration
             $table->string('nombre')->nullable(false);
             $table->string('descripcion');
             $table->integer('stock')->nullable(false);
-            $table->integer('category_id')->nullable(false);
+
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
+
             $table->float('precio_unitario',8,2);
             $table->timestamps();
         });
