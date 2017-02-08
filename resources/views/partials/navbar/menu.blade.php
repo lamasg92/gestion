@@ -35,10 +35,10 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="{{ route('report.sales.byclient.index') }}">Venta Diaria</a>
+                            <a href="{{ route('report.sales.byclient.index') }}">Venta por Cliente</a>
                         </li>
                         <li>
-                            <a href="#">Venta por Cliente</a>
+                            <a href="#">enta Diaria</a>
                         </li>
                         <li>
                             <a href="#">Venta por Usuario</a>
