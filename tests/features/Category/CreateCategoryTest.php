@@ -46,7 +46,7 @@ class CreateCategoryTest extends \FeatureTestCase
         $this->actingAs($this->getAdminUser());
         //when
         $this->visit(route('categories.create'))
-            ->press('Aceptar');
+            ->press('Crear');
         //Then
          $this->seePageIs(route('categories.create'))
              ->seeErrors([
