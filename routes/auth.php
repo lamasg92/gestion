@@ -98,3 +98,8 @@ Route::post('report/sales/index/byuser', [
     'uses' => 'Report\ReportController@showUser',
     'as' => 'report.sales.byuser.index',
 ]);
+
+Route::post('report/sales/index/daily', [
+    'uses' => 'Report\ReportController@daily',
+    'as' => 'report.sales.daily.index',
+]);
