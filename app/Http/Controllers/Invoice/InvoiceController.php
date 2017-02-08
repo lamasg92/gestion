@@ -34,9 +34,6 @@ class InvoiceController extends Controller
                 'model' => $this->_invoiceRepo->getAll()
             ]
         );
-        //search options
-//        $invoices = Invoice::name($request->get('numero'))->orderby('id', 'DESC')->paginate();
-//        return view('invoice.index', compact('invoices'));
     }
 
 
