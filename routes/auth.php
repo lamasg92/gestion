@@ -81,9 +81,11 @@ Route::get('invoices/payments', function (){
 
 
 //reports routes
-Route::get('report/sales/byclient/index', [
+
+
+Route::get('report/sales/index/{filter}', [
     'uses' => 'Report\ReportController@index',
-    'as' => 'report.sales.byclient.index',
+    'as' => 'report.sales.index',
 ]);
 
 
