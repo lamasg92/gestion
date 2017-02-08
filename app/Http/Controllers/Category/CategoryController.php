@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         //search options
-        $categories = Category::name($request->get('nombre'))->orderby('id', 'DESC')->paginate();
+        $categories = Category::name($request->get('nombre'))->orderby('id', 'ASC')->paginate();
 
         return view('admin.categories.index', compact('categories'));
     }
