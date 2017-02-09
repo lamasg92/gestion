@@ -9,6 +9,7 @@
 namespace app\Repositories;
 
 
+use App\Entities\Article;
 use App\Entities\Invoice;
 use App\Entities\Invoice_Detail;
 use DB;
@@ -59,7 +60,6 @@ class InvoiceRepository
                 $this->model->cupon = $data->cupon;
                 $this->model->total = $data->total;
                 $this->model->user_id = Auth::id();;
-
                 $this->model->save();
 
                 $detail = [];
@@ -70,6 +70,10 @@ class InvoiceRepository
                     $obj->article_id = $d->article_id;
                     $obj->precio = $d->precio;
                     $obj->total_line = $d->total_line;
+
+                    $article = Article::findOrFail($d->article_id);
+                    $article->stock = $article->stock - $d->cantidad;;
+                    $article->save();
 
                     $detail[] = $obj;
                 }
