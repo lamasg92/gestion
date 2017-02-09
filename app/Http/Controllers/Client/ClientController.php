@@ -88,7 +88,15 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $client = Client::findOrFail($id);
+
         $client->fill($request->all());
+
+        $this->validate($request, [
+            'nombre' => 'required',
+            'telefono' => 'required|numeric',
+            'email' => 'required|email|max:255|unique:clients'
+        ]);
+
         $client->save();
         flash('Cliente Actualizado exitosamente!!', 'success');
         return redirect()->route('clients.index');
