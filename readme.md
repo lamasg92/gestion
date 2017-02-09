@@ -34,7 +34,7 @@ El sistema presenta la funcionalidad de acceso por logueo y Registro de nuevo Us
 <a name="start"></a>
 ## Getting Started
 
-Es un sistema pensado para ejecutarse de forma local por lo que debera ser instalado en una pc, ademas debera contar conel software correspondiente (definidos en requerimientos) para poder interactuar con el mismo.
+Es un sistema pensado para ejecutarse de forma local por lo que debera ser instalado en una pc, ademas debera contar con el software correspondiente (definidos en requerimientos) para poder interactuar con el mismo.
 Los pasos para la instalacion no contemplan la instalacion del software base
 
 <a name="Requerimientos"></a>
@@ -45,13 +45,20 @@ Se debera contar con lo siguiente instalado previamente
 * MySql
 * Apache
 * Composer
+* Conexion a internet
 
-
-se puede instalar  XAMPP como alternativa para Windows 
+se puede instalar  XAMPP como alternativa para Windows o bien LAMP en entornes Linux
 
 
 <a name="Instalacion"></a>
 ### Instalacion
+Lugo de clonar el sistema desde GitHub usando 
+
+```
+git clone https://github.com/veplechuc/gestion.git`
+```
+Nota: Ejecutar este comando desde una consola posicionado en el directorio htdocs de Xampp o bien el httpdocs de Apache
+
 
 Como primer paso para la instalacion del Sistema se deberan configurar las siguientes opciones
 
@@ -87,15 +94,18 @@ en Windows agregar en C:\Windows\System32\drivers\etc en el host, si lo ejecuta 
 ```
 127.0.0.1      		gestion.app
 ```
-para que la url sea gestion.app:8081 es decir, en el browser sera algo como 
+para que la url sea **gestion.app:8081** es decir, en el browser sera algo como 
 
 ```
 http://gestion.app:8081
 ```
-En la raiz del proyecto se puede encontrar un arch env.example, renombralo a .env y editar todos los parametros para la aplicacion)
+
+#####Configuracion archivo de Environment
+En la raiz del proyecto se puede encontrar un arch **env.example**, renombralo a **.env** y editar todos los parametros para la aplicacion)
 
 #####configuracion de la BD (MySql)
 ```
+Los siguientes son los parametros que se deben definir en el archivo .env 
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=DB_name
@@ -103,7 +113,13 @@ DB_USERNAME=user
 DB_PASSWORD=secret
 ```
 
-desde el raiz del proyecto abrir una ventana de comandos o bash y ejecutar
+Usando algun gestor de BD crear una BD llamada **gestion**
+
+#####Definicion de Usuarios de BD
+Lo definido en DB_USERNAME=user y DB_PASSWORD=secret hacen referencia al usuario que tendra acceso a la BD no al que esta definido en el sistema
+
+
+Ddesde el raiz del proyecto abrir una ventana de comandos o bash y ejecutar
 
 ```
 composer update 
@@ -115,6 +131,8 @@ php artisan  key:generate
 ```
 agrega una clave en el arch env, neccesario para poder correr la aplicaion
 
+*Nota*: el comando anterior debra ejecutarse si se ha clonado el sistema desde GitHub
+
 una vez creada la bd en mysql ejecutar las migraciones para la creacion de tablas y carga de datos
  
  ```
@@ -125,13 +143,13 @@ esto te genera las tablas y relaciones en la bd ademas carga con algunos datos
 
 
 <a name="Documentacion"></a>
-## Documentacion
-En la wed de Styde.net ()https://styde.net/) se puede hallar excelente documentacion 
+## Documentacion Relacionada con la Instalacion
+En la wed de Styde.net ()https://styde.net/) se pueden hallar excelentes tutoriales para la instalacion y configuracion de los entornos 
 
 * [Cómo instalar Composer y Laravel en Windows](https://styde.net/instalacion-de-composer-y-laravel-en-windows/) 
 * [Cómo instalar Composer y Laravel en Linux](https://styde.net/como-instalar-lamp-en-ubuntu-linux/)
 
-###Los Menues
+###Descripcion de Los Menus
 
 <a name="MenusADM"></a>
 ####Del Administrador
@@ -145,8 +163,8 @@ Visualiza los roles definidos en el sistema
 
 | Rol        | Descripcion      | 
 | ------------- |:-------------:| 
-| **admin**     | Administrador del sistema | 
-| **user**      | Usuario del sistema      | 
+| **admin**     | Administrador del sistema - acceso a todas las opciones | 
+| **user**      | Usuario del sistema  - solo Facturacion y ABM de Clientes    | 
  
 
 
@@ -178,6 +196,9 @@ Ademas permite el ingreso del Medio de pago(el sistema maneja solo dos : Efectiv
 #####Clientes (comun para todos los usuarios)
 ABM de la informacion correspondiente al cliente 
 
+
+
+
 <a name="Tools"></a>
 ## Tools y FrameWorks
 
@@ -193,17 +214,15 @@ ABM de la informacion correspondiente al cliente
 
 <a name="Issues"></a>
 ## Issues
-En la generacion de los pdf´s de los comprobantes se detecto un error  que aborta el sistema, si se tiene instalado PHP en su version 7.1
+ * En la generacion de los pdf´s de los comprobantes se detecto un error  que aborta el sistema, si se tiene instalado PHP en su version 7.1
 Este es el Link relacionado con ese issue
 https://github.com/dompdf/dompdf/issues/1272
+
+* Se usa el puerto 8081 ya que suele generar conflicto con Skype el usar el puerto **80**.
 
 ## Authors
 
 * **Plechuc Valentin** - *profile* - [GitHub](https://github.com/veplechuc)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 
 <a name="Laravel"></a>
