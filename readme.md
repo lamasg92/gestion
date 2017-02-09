@@ -28,6 +28,8 @@ El sistema presenta la funcionalidad de acceso por logueo y Registro de nuevo Us
 
 - [Issues](#Issues)
 
+- [Laravel Oficial](#laravel)
+
 
 <a name="start"></a>
 ## Getting Started
@@ -204,14 +206,9 @@ https://github.com/dompdf/dompdf/issues/1272
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 
-
+<a name="Laravel"></a>
 # Laravel PHP Framework
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
