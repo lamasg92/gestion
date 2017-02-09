@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Entities\Role;
 use App\Entities\User;
+use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Crypt;
@@ -64,7 +65,15 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->delete();
+
+        try{
+            $user->delete();
+        }catch (Exception $e){
+            flash('El Usuario tiene facturas asociadas!!', 'warning');
+            return redirect()->back();
+        };
+
+
         flash('Usuario borrado exitosamente!!', 'success');
         return redirect()->back();
     }
