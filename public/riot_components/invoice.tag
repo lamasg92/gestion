@@ -18,12 +18,12 @@
             <input id="product" class="form-control" type="text" placeholder="Nombre del articulo" />
         </div>
         <div class="col-xs-2">
-            <input id="quantity" class="form-control" type="text" placeholder="Cantidad" />
-        </div>
-        <div class="col-xs-2">
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Precio" value="{price}" readonly />
             </div>
+        </div>
+        <div class="col-xs-2">
+            <input id="quantity" class="form-control" type="text" placeholder="Cantidad" />
         </div>
         <div class="col-xs-1">
             <button onclick={__addRow} class="btn
