@@ -11,13 +11,30 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+use App\Entities\{Category, Role, User};
+
+$factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
         'name' => $faker->name,
+        'username' => $faker->unique()->userName,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
+        'role_id' => $faker->numberBetween($min = 2, $max = 3),
         'remember_token' => str_random(10),
     ];
+});
+$factory->define(Category::class, function (Faker\Generator $faker) {
+    return [
+        'nombre' => $faker->word,
+        'descripcion' => $faker->text,
+    ];
+});
+
+$factory->define(Role::class, function (Faker\Generator $faker) {
+    return array(
+        'nombre' => $faker->unique()->word,
+        'descripcion' => $faker->text,
+    );
 });

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -37,27 +37,84 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
+        //Public routes
+        $this->mapPublicRoutes();
 
+        //Guest rotes only
+        $this->mapGuestRoutes();
+
+        //authenticated user routes
+        $this->mapAuthRoutes();
+
+        //authenticated user routes
+        $this->mapAdminRoutes();
         //
     }
 
     /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
+     * Define the "public " routes for the application.
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapPublicRoutes()
     {
         Route::group([
             'middleware' => 'web',
             'namespace' => $this->namespace,
         ], function ($router) {
-            require base_path('routes/web.php');
+            require base_path('routes/public.php');
         });
     }
+
+    /**
+     * Define the "guest" routes for the application.
+     * Anonymous user into the system
+     *
+     * @return void
+     */
+    protected function mapGuestRoutes()
+    {
+        Route::group([
+            'middleware' => ['web','guest'],
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/guest.php');
+        });
+    }
+
+
+    /**
+     * Define the "authenticated" routes for the application.
+     *
+     *
+     * @return void
+     */
+    protected function mapAuthRoutes()
+    {
+        Route::group([
+            'middleware' => ['web','auth'],
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/auth.php');
+        });
+    }
+
+    /**
+     * Define the "admin" routes for the application.
+     *
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::group([
+            'middleware' => [ 'web', 'auth', 'admin'],
+            'namespace' => $this->namespace,
+            'prefix' => 'admin',
+        ], function ($router) {
+            require base_path('routes/admin.php');
+        });
+    }
+
 
     /**
      * Define the "api" routes for the application.
