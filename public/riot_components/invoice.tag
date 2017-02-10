@@ -110,171 +110,180 @@
         {
             var quantity = parseFloat($("#quantity").val());
 
-            if ((cantidad_stock - $("#quantity").val()) >= 0) {
+            if (quantity > 0) {
+                if ((cantidad_stock - $("#quantity").val()) >= 0) {
 
-                if ((article_id > 0) && (quantity > 0 )) {
-                    self.detail.push({
-                        id: article_id,
-                        nombre: $("#product").val(),
-                        quantity: parseFloat($("#quantity").val()),
-                        price: self.price,
-                        total: self.price * parseFloat($("#quantity").val())
+                    if ((article_id > 0) && (quantity > 0 )) {
+                        self.detail.push({
+                            id: article_id,
+                            nombre: $("#product").val(),
+                            quantity: parseFloat($("#quantity").val()),
+                            price: self.price,
+                            total: self.price * parseFloat($("#quantity").val())
+                        });
+
+                        $("#product").val('');
+                        $("#quantity").val('')
+                        self.price = '';
+                        __totals();
+                    }
+                } else {
+                    alert('Intenta Facturar sin Stock Suficiente!!', 'Ok')
+                }
+            }else{
+                alert('La Cantidad debe ser mayor que cero!', 'Ok')
+            }
+
+            }
+
+            __saveData()
+        {
+            if ( $("#cupon").val() != "") {
+                $.post(baseUrl('invoices/store'), {
+                    client_id: self.client_id,
+                    payment_id: self.payment_id,
+                    total: self.total,
+                    cupon: $("#cupon").val(),
+                    detail: self.detail
+                }, function (r) {
+                    if (r.response) {
+                        window.location.href = baseUrl('invoices/index');
+                    } else {
+                        alert('Ocurrio un error');
+                    }
+                }, 'json')
+
+            }else{
+                alert('Ingrese el Número de Cupon!', 'Ok')
+            }
+        }
+
+                function __totals() {
+                    var total = 0;
+                    self.detail.forEach(function (e) {
+                        total += e.total;
                     });
+                    self.total = total;
+                }
 
-                    $("#product").val('');
-                    $("#quantity").val('')
-                    self.price = '';
+                __removeDetail(e)
+                {
+                    var item = e.item,
+                        index = this.detail.indexOf(item);
+
+                    this.detail.splice(index, 1);
                     __totals();
                 }
-            } else [
-                alert('Intenta Facturar sin Stock Suficiente!!')
 
-            ]
-        }
-
-        __saveData()
-        {
-            $.post(baseUrl('invoices/store'), {
-                client_id: self.client_id,
-                payment_id: self.payment_id,
-                total: self.total,
-                cupon: $("#cupon").val(),
-                detail: self.detail
-            }, function (r) {
-                if (r.response) {
-                    window.location.href = baseUrl('invoices/index');
-                } else {
-                    alert('Ocurrio un error');
+                function __clientAutocomplete() {
+                    var client = $("#client"),
+                        client_options = {
+                            url: "/invoices/clients",
+                            getValue: "nombre",
+                            template: {
+                                type: "description",
+                                fields: {
+                                    description: "email",
+                                }
+                            },
+                            list: {
+                                match: {
+                                    enabled: true
+                                },
+                                onClickEvent: function () {
+                                    var e = $("#client").getSelectedItemData();
+                                    self.client_id = e.id;
+                                    self.address = e.direccion;
+                                    self.mail = e.email;
+                                    self.update();
+                                }
+                            },
+                            theme: "bootstrap",
+                            ajaxSettings: {
+                                dataType: "json",
+                                method: "GET",
+                                data: {}
+                            },
+                            preparePostData: function (data) {
+                                data.term = $("#client").val();
+                                return data;
+                            },
+                            requestDelay: 400
+                        };
+                    client.easyAutocomplete(client_options);
                 }
-            }, 'json')
-        }
 
-        function __totals() {
-            var total = 0;
-            self.detail.forEach(function (e) {
-                total += e.total;
-            });
-            self.total = total;
-        }
+                function __articleAutocomplete() {
+                    var article = $("#product"),
+                        article_options = {
+                            url: "/invoices/articles",
+                            getValue: "nombre",
+                            template: {
+                                type: "description",
+                                fields: {
+                                    description: "descripcion",
+                                }
+                            },
+                            list: {
+                                match: {
+                                    enabled: true
+                                },
+                                onClickEvent: function () {
+                                    var e = article.getSelectedItemData();
+                                    article_id = e.id;
+                                    self.price = e.precio_unitario;
+                                    cantidad_stock = e.stock;
+                                    self.update();
+                                }
+                            },
+                            theme: "bootstrap",
+                            ajaxSettings: {
+                                dataType: "json",
+                                method: "GET",
+                                data: {}
+                            },
+                            preparePostData: function (data) {
+                                data.term = $("#product").val();
+                                return data;
+                            },
+                            requestDelay: 400
+                        };
+                    article.easyAutocomplete(article_options);
+                }
 
-        __removeDetail(e)
-        {
-            var item = e.item,
-                index = this.detail.indexOf(item);
+                function __paymentAutocomplete() {
+                    var pago = $("#payment"),
+                        payment_options = {
+                            url: "/invoices/payments",
+                            getValue: "nombre",
 
-            this.detail.splice(index, 1);
-            __totals();
-        }
-
-        function __clientAutocomplete() {
-            var client = $("#client"),
-                client_options = {
-                    url: "/invoices/clients",
-                    getValue: "nombre",
-                    template: {
-                        type: "description",
-                        fields: {
-                            description: "email",
-                        }
-                    },
-                    list: {
-                        match: {
-                            enabled: true
-                        },
-                        onClickEvent: function () {
-                            var e = $("#client").getSelectedItemData();
-                            self.client_id = e.id;
-                            self.address = e.direccion;
-                            self.mail = e.email;
-                            self.update();
-                        }
-                    },
-                    theme: "bootstrap",
-                    ajaxSettings: {
-                        dataType: "json",
-                        method: "GET",
-                        data: {}
-                    },
-                    preparePostData: function (data) {
-                        data.term = $("#client").val();
-                        return data;
-                    },
-                    requestDelay: 400
-                };
-            client.easyAutocomplete(client_options);
-        }
-
-        function __articleAutocomplete() {
-            var article = $("#product"),
-                article_options = {
-                    url: "/invoices/articles",
-                    getValue: "nombre",
-                    template: {
-                        type: "description",
-                        fields: {
-                            description: "descripcion",
-                        }
-                    },
-                    list: {
-                        match: {
-                            enabled: true
-                        },
-                        onClickEvent: function () {
-                            var e = article.getSelectedItemData();
-                            article_id = e.id;
-                            self.price = e.precio_unitario;
-                            cantidad_stock = e.stock;
-                            self.update();
-                        }
-                    },
-                    theme: "bootstrap",
-                    ajaxSettings: {
-                        dataType: "json",
-                        method: "GET",
-                        data: {}
-                    },
-                    preparePostData: function (data) {
-                        data.term = $("#product").val();
-                        return data;
-                    },
-                    requestDelay: 400
-                };
-            article.easyAutocomplete(article_options);
-        }
-
-        function __paymentAutocomplete() {
-            var pago = $("#payment"),
-                payment_options = {
-                    url: "/invoices/payments",
-                    getValue: "nombre",
-
-                    list: {
-                        match: {
-                            enabled: true
-                        },
-                        onClickEvent: function () {
-                            var e = pago.getSelectedItemData();
-                            self.payment_id = e.id;
-                            self.payment_nombre = e.nombre;
+                            list: {
+                                match: {
+                                    enabled: true
+                                },
+                                onClickEvent: function () {
+                                    var e = pago.getSelectedItemData();
+                                    self.payment_id = e.id;
+                                    self.payment_nombre = e.nombre;
 
 
-                            self.update();
-                        }
-                    },
-                    theme: "bootstrap",
-                    ajaxSettings: {
-                        dataType: "json",
-                        method: "GET",
-                        data: {}
-                    },
-                    preparePostData: function (data) {
-                        data.term = $("#payment").val();
-                        return data;
-                    },
-                    requestDelay: 400
-                };
-            pago.easyAutocomplete(payment_options);
-        }
+                                    self.update();
+                                }
+                            },
+                            theme: "bootstrap",
+                            ajaxSettings: {
+                                dataType: "json",
+                                method: "GET",
+                                data: {}
+                            },
+                            preparePostData: function (data) {
+                                data.term = $("#payment").val();
+                                return data;
+                            },
+                            requestDelay: 400
+                        };
+                    pago.easyAutocomplete(payment_options);
+                }
 
     </script>
 </invoice>
