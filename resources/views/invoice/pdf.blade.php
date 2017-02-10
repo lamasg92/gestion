@@ -50,9 +50,9 @@
     @foreach($model->invoice_details as $d)
         <tr>
             <td>{{$d->article->nombre}}</td>
-            <td >{{$d->cantidad}}</td>
-            <td >$ {{number_format($d->precio, 2)}}</td>
-            <td >$ {{number_format($d->total_line, 2)}}</td>
+            <td class="text-right">{{$d->cantidad}}</td>
+            <td class="text-right">$ {{number_format($d->precio, 2)}}</td>
+            <td class="text-right">$ {{number_format($d->total_line, 2)}}</td>
         </tr>
     @endforeach
     </tbody>

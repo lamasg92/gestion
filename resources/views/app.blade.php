@@ -19,6 +19,7 @@
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/wow-alert.css') }}" rel="stylesheet">
 
    @yield('styles')
 
@@ -62,7 +63,7 @@
 <script src="{{asset('bower_components/riot/riot.min.js')}}"></script>
 <script src="{{asset('bower_components/riot/riot+compiler.min.js')}}"></script>
 <script src="{{asset('ini.js')}}"></script>
-
+<script src="{{asset('js/wow-alert.js')}}"></script>
 @yield('scripts')
 
 
